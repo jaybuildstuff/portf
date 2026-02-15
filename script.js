@@ -6,6 +6,15 @@ document.querySelectorAll(".category-toggle").forEach(button => {
     });
 });
 
+// Tag navigation
+document.querySelectorAll(".tag").forEach(tag => {
+    tag.addEventListener("click", () => {
+        const target = tag.getAttribute("data-target");
+        if (!target) return;
+        document.getElementById(target).scrollIntoView({ behavior: "smooth" });
+    });
+});
+
 // Profile glow toggle
 const profile = document.getElementById("profileToggle");
 profile.addEventListener("click", () => {
@@ -17,7 +26,7 @@ window.addEventListener("load", () => {
     document.querySelector(".progress").style.width = "100%";
 });
 
-// Last updated date
+// Date
 const today = new Date();
 document.getElementById("last-update").textContent =
 "Last Updated: " + today.toLocaleDateString();
