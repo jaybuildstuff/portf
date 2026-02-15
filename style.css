@@ -236,16 +236,19 @@ h1 {
 }
 
 .category-toggle {
-    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
     background: var(--box);
     border: 1px solid rgba(255,255,255,0.12);
     padding: 1rem;
+    width: 100%;
     font-weight: 600;
     text-align: left;
     cursor: pointer;
     border-radius: 8px;
     transition: 0.25s ease;
-    color: var(--text);   /* ← THIS LINE FIXES IT */
+    color: var(--text);
+    font-family: inherit;
 }
 .category-toggle:hover {
     background: #1f1f1f;
