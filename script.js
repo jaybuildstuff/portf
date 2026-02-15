@@ -5,7 +5,6 @@ document.querySelectorAll(".category-toggle").forEach(button => {
     });
 });
 
-// Availability toggle
 const available = true;
 
 const dot = document.querySelector(".status-dot");
