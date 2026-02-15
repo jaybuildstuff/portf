@@ -1,3 +1,4 @@
+// Accordion
 document.querySelectorAll(".category-toggle").forEach(button => {
     button.addEventListener("click", () => {
         const content = button.nextElementSibling;
@@ -5,13 +6,18 @@ document.querySelectorAll(".category-toggle").forEach(button => {
     });
 });
 
-const available = true;
+// Profile glow toggle
+const profile = document.getElementById("profileToggle");
+profile.addEventListener("click", () => {
+    profile.classList.toggle("active");
+});
 
-const dot = document.querySelector(".status-dot");
-const text = document.getElementById("availability-text");
+// Progress animation
+window.addEventListener("load", () => {
+    document.querySelector(".progress").style.width = "100%";
+});
 
-if (!available) {
-    dot.style.background = "var(--unavailable)";
-    dot.style.boxShadow = "none";
-    text.textContent = "Currently Unavailable";
-}
+// Last updated date
+const today = new Date();
+document.getElementById("last-update").textContent =
+"Last Updated: " + today.toLocaleDateString();
