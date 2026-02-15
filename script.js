@@ -7,11 +7,11 @@ document.querySelectorAll(".category-toggle").forEach(button => {
 });
 
 // Tag navigation
-document.querySelectorAll(".tag").forEach(tag => {
+document.querySelectorAll(".tag, .mini-box").forEach(tag => {
     tag.addEventListener("click", () => {
         const target = tag.getAttribute("data-target");
         if (!target) return;
-        document.getElementById(target).scrollIntoView({ behavior: "smooth" });
+        document.getElementById(target)?.scrollIntoView({ behavior: "smooth" });
     });
 });
 
