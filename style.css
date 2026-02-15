@@ -38,10 +38,14 @@ body {
     opacity: 0.2;
 }
 
+/* ================= TOP BAR ================= */
+
 .top-bar {
     display: flex;
     justify-content: space-between;
     padding: 1.5rem 3rem;
+    position: relative;
+    z-index: 5;
 }
 
 .social-icons a {
@@ -51,10 +55,13 @@ body {
     text-decoration: none;
 }
 
+/* ================= UPDATE BAR ================= */
+
 .update-bar {
     height: 4px;
     background: #111;
     position: relative;
+    z-index: 5;
 }
 
 .progress {
@@ -72,21 +79,80 @@ body {
     color: var(--muted);
 }
 
+/* ================= HERO ================= */
+
 .hero {
+    position: relative;
+    overflow: hidden;
     text-align: center;
     padding: 5rem 2rem;
 }
 
-h1 {
-    font-size: 2.8rem;
-    font-weight: 800;
-    letter-spacing: -1px;
+/* Rolling background container */
+
+.rolling-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 0;
+
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
 }
 
-.role {
-    color: var(--muted);
-    margin-top: 0.5rem;
+.rolling-strip {
+    display: flex;
+    gap: 60px;
+    width: max-content;
 }
+
+.rolling-strip img {
+    height: 120px;
+    width: auto;
+    object-fit: cover;
+    opacity: 0.14;
+    filter: grayscale(100%);
+    transition: 0.3s ease;
+}
+
+.rolling-strip img:hover {
+    opacity: 0.35;
+    filter: grayscale(0%);
+}
+
+/* Animation directions */
+
+.left {
+    animation: scrollLeft 70s linear infinite;
+}
+
+.right {
+    animation: scrollRight 70s linear infinite;
+}
+
+@keyframes scrollLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes scrollRight {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+/* Keep hero content above background */
+
+.hero-content,
+.profile-image {
+    position: relative;
+    z-index: 2;
+}
+
+/* ================= PROFILE ================= */
 
 .profile-image {
     width: 200px;
@@ -106,6 +172,17 @@ h1 {
 
 .profile-image.active {
     box-shadow: 0 0 60px rgba(46,204,113,0.5);
+}
+
+h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.role {
+    color: var(--muted);
+    margin-top: 0.5rem;
 }
 
 .bio {
@@ -142,33 +219,12 @@ h1 {
     transition: 0.3s ease;
 }
 
-.telegram-cta span {
-    color: var(--text);
-}
-
 .telegram-cta:hover {
     background: #222;
     transform: translateY(-2px);
 }
 
-
-.mini-box {
-    display: inline-block;
-    padding: 3px 8px;
-    margin: 0 4px;
-    border-radius: 6px;
-    border: 1px solid #222;
-    background: #1c1c1c;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-.projects-frame {
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 14px;
-    padding: 2rem;
-    box-shadow: 0 0 40px rgba(255,255,255,0.03);
-}
+/* ================= PROJECTS ================= */
 
 .work-section {
     padding: 4rem 2rem;
@@ -176,9 +232,11 @@ h1 {
     margin: auto;
 }
 
-.work-section h2 {
-    font-weight: 800;
-    margin-bottom: 2rem;
+.projects-frame {
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 2rem;
+    box-shadow: 0 0 40px rgba(255,255,255,0.03);
 }
 
 .category-toggle {
@@ -196,7 +254,6 @@ h1 {
 
 .category-toggle:hover {
     background: #1f1f1f;
-    border-color: rgba(255,255,255,0.25);
 }
 
 .category-content {
@@ -211,17 +268,7 @@ h1 {
     display: block;
 }
 
-.hobbies {
-    text-align: center;
-    padding: 3rem;
-    background: var(--box);
-}
-
-.clean-link {
-    color: var(--text);
-    text-decoration: none;
-    font-weight: 600;
-}
+/* ================= FOOTER ================= */
 
 .footer {
     display: flex;
@@ -243,142 +290,3 @@ h1 {
 .circle:first-child { background: #FF8000; }
 .circle:nth-child(2) { background: #05E156; transform: translateX(-4px); }
 .circle:nth-child(3) { background: #40BCF4; transform: translateX(-8px); }
-/* ========================== */
-/* ROLLING FILM STRIP */
-/* ========================== */
-
-.hero {
-    position: relative;
-    overflow: hidden;
-}
-
-.rolling-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 180px;
-    overflow: hidden;
-    z-index: 0;
-    mask-image: linear-gradient(to right, 
-        transparent 0%, 
-        black 10%, 
-        black 90%, 
-        transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, 
-        transparent 0%, 
-        black 10%, 
-        black 90%, 
-        transparent 100%);
-}
-
-.rolling-strip {
-   /* ========================= */
-/* MULTI ROW ROLLING SYSTEM */
-/* ========================= */
-
-.hero {
-    position: relative;
-    overflow: hidden;
-}
-
-.rolling-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    z-index: 0;
-
-    mask-image: linear-gradient(to right, 
-        transparent 0%, 
-        black 10%, 
-        black 90%, 
-        transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, 
-        transparent 0%, 
-        black 10%, 
-        black 90%, 
-        transparent 100%);
-}
-
-.rolling-strip {
-    display: flex;
-    gap: 60px;
-    width: max-content;
-}
-
-.rolling-strip img {
-    height: 120px;
-    width: auto;
-    object-fit: cover;
-    opacity: 0.14;
-    filter: grayscale(100%);
-    transition: 0.3s ease;
-}
-
-.rolling-strip img:hover {
-    opacity: 0.35;
-    filter: grayscale(0%);
-}
-
-/* Left direction */
-.left {
-    animation: scrollLeft 70s linear infinite;
-}
-
-/* Right direction */
-.right {
-    animation: scrollRight 70s linear infinite;
-}
-
-@keyframes scrollLeft {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-@keyframes scrollRight {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
-}
-
-/* Keep hero content above */
-.hero-content,
-.profile-image {
-    position: relative;
-    z-index: 2;
-}
-}
-
-.rolling-strip img {
-    height: 150px;
-    width: auto;
-    object-fit: cover;
-    opacity: 0.15;
-    filter: grayscale(100%);
-    transition: 0.3s ease;
-}
-
-.rolling-strip img:hover {
-    opacity: 0.4;
-    filter: grayscale(0%);
-}
-
-@keyframes scrollLeft {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
-/* Make hero content appear above the strip */
-
-.hero-content,
-.profile-image {
-    position: relative;
-    z-index: 2;
-}
