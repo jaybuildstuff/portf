@@ -21,7 +21,10 @@ body {
     line-height: 1.8;
     -webkit-font-smoothing: antialiased;
 }
-
+a {
+    color: inherit;
+    text-decoration: none;
+}
 @keyframes subtleShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -227,9 +230,9 @@ h1 {
 /* ================= PROJECTS ================= */
 
 .work-section {
-    padding: 4rem 2rem;
-    max-width: 900px;
-    margin: 0 auto;
+    .work-section {
+    margin: 4rem auto;
+    text-align: center;
 }
 
 .projects-frame {
