@@ -4,6 +4,7 @@
     --text-secondary: #9e9e9e;
     --accent: #ffffff;
     --available: #2ecc71;
+    --unavailable: #777;
 }
 
 * {
@@ -20,20 +21,16 @@ body {
     overflow-x: hidden;
 }
 
-/* Grain Texture */
 .grain {
     position: fixed;
     inset: 0;
     background-image: url("https://grainy-gradients.vercel.app/noise.svg");
     opacity: 0.04;
     pointer-events: none;
-    z-index: 1;
+    z-index: 999;
 }
 
-/* Top Bar */
 .top-bar {
-    position: relative;
-    z-index: 2;
     display: flex;
     justify-content: space-between;
     padding: 1.5rem 2rem;
@@ -53,10 +50,9 @@ body {
     background: var(--available);
     border-radius: 50%;
     margin-right: 0.6rem;
-    box-shadow: 0 0 8px var(--available);
+    box-shadow: 0 0 6px var(--available);
 }
 
-/* Social Icons */
 .social-icons a {
     color: var(--text-secondary);
     margin-left: 1rem;
@@ -68,10 +64,7 @@ body {
     color: var(--accent);
 }
 
-/* Hero */
 .hero {
-    position: relative;
-    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,12 +73,11 @@ body {
     flex-wrap: wrap;
 }
 
-/* Profile Image */
 .profile-image {
     width: 220px;
     height: 220px;
     border-radius: 50%;
-    overflow: hidden;
+    background: url('profile.jpg') center/cover no-repeat;
     box-shadow: 0 0 40px rgba(255,255,255,0.08);
     position: relative;
 }
@@ -93,18 +85,11 @@ body {
 .profile-image::after {
     content: "";
     position: absolute;
-    inset: -6px;
+    inset: -5px;
     border-radius: 50%;
     border: 1px solid rgba(255,255,255,0.15);
 }
 
-.profile-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Hero Content */
 .hero-content {
     max-width: 500px;
 }
@@ -124,7 +109,6 @@ body {
     color: var(--text-secondary);
 }
 
-/* Telegram Button */
 .telegram-cta {
     display: inline-block;
     padding: 0.6rem 1.4rem;
@@ -139,10 +123,7 @@ body {
     color: var(--bg);
 }
 
-/* Work Section */
 .work-section {
-    position: relative;
-    z-index: 2;
     padding: 3rem 2rem;
     max-width: 800px;
     margin: auto;
@@ -174,27 +155,37 @@ body {
 }
 
 .category-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
+    display: none;
+    padding-bottom: 1rem;
     color: var(--text-secondary);
 }
 
 .category-content.active {
-    max-height: 200px;
-    padding-bottom: 1rem;
+    display: block;
 }
 
-/* Hobbies */
 .hobbies {
     text-align: center;
     padding: 3rem 2rem;
     color: var(--text-secondary);
-    position: relative;
-    z-index: 2;
 }
 
-/* Responsive */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+}
+
+.footer a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.footer a:hover {
+    color: var(--accent);
+}
+
 @media (max-width: 768px) {
     .hero {
         flex-direction: column;
