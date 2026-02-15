@@ -245,8 +245,8 @@ h1 {
     cursor: pointer;
     border-radius: 8px;
     transition: 0.25s ease;
+    color: var(--text);   /* ← THIS LINE FIXES IT */
 }
-
 .category-toggle:hover {
     background: #1f1f1f;
 }
