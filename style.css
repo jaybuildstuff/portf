@@ -183,11 +183,19 @@ h1 {
 .category-toggle {
     width: 100%;
     background: var(--box);
-    border: 1px solid #222;
+    border: 1px solid rgba(255,255,255,0.12);
     padding: 1rem;
     font-weight: 600;
     text-align: left;
     cursor: pointer;
+    color: var(--text);
+    border-radius: 8px;
+    transition: 0.25s ease;
+}
+
+.category-toggle:hover {
+    background: #1f1f1f;
+    border-color: rgba(255,255,255,0.25);
 }
 
 .category-content {
