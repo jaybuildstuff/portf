@@ -257,6 +257,7 @@ h1 {
 }
 
 .category-content {
+    .category-content {
     display: none;
     padding: 1rem;
     border: 1px solid #222;
