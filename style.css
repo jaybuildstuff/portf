@@ -81,7 +81,7 @@ body {
     width: 220px;
     height: 220px;
     border-radius: 50%;
-    background: url('https://via.placeholder.com/400') center/cover;
+    background: url('profile.jpg') center/cover no-repeat;
     box-shadow: 0 0 40px rgba(255,255,255,0.08);
     position: relative;
 }
