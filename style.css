@@ -227,10 +227,9 @@ h1 {
 /* ================= PROJECTS ================= */
 
 .work-section {
-    .work-section {
     padding: 4rem 2rem;
     max-width: 900px;
-    margin: 0 auto;   /* THIS centers it */
+    margin: 0 auto;
 }
 
 .projects-frame {
@@ -258,22 +257,26 @@ h1 {
 }
 
 .category-content {
-    .category-content a {
-    color: var(--text);
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.category-content a:hover {
-    text-decoration: underline;
-    opacity: 0.8;
+    display: none;
+    padding: 1rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    color: var(--muted);
 }
 
 .category-content.active {
     display: block;
 }
 
-/* ================= FOOTER ================= */
+.category-content a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.category-content a:hover {
+    opacity: 0.8;
+}
 
 .footer {
     display: flex;
