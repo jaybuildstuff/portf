@@ -227,9 +227,10 @@ h1 {
 /* ================= PROJECTS ================= */
 
 .work-section {
+    .work-section {
     padding: 4rem 2rem;
     max-width: 900px;
-    margin: auto;
+    margin: 0 auto;   /* THIS centers it */
 }
 
 .projects-frame {
@@ -257,12 +258,15 @@ h1 {
 }
 
 .category-content {
-    .category-content {
-    display: none;
-    padding: 1rem;
-    border: 1px solid #222;
-    border-top: none;
+    .category-content a {
     color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.category-content a:hover {
+    text-decoration: underline;
+    opacity: 0.8;
 }
 
 .category-content.active {
