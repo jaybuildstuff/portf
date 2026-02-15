@@ -1,98 +1,212 @@
 :root {
-    --bg-dark: #0e0e0e;
-    --bg-light: #151515;
+    --bg1: #0e0e0e;
+    --bg2: #141414;
     --text: #f2f2f2;
     --muted: #9b9b9b;
+    --box: #171717;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     font-family: 'Manrope', sans-serif;
     background: linear-gradient(-45deg, #0e0e0e, #141414, #101010, #161616);
     background-size: 400% 400%;
-    animation: gradientMove 18s ease infinite;
+    animation: subtleShift 18s ease infinite;
     color: var(--text);
-    margin: 0;
     line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
 }
 
-@keyframes gradientMove {
+@keyframes subtleShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-.film-grain {
+.grain {
     position: fixed;
-    inset: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
-    background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+    background: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
     background-size: 3px 3px;
-    opacity: 0.25;
+    opacity: 0.2;
 }
 
-/* Tags */
-.tag {
-    font-weight: 600;
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 3rem;
+}
+
+.social-icons a {
+    color: var(--text);
+    margin-left: 18px;
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+
+.update-bar {
+    height: 4px;
+    background: #111;
+    position: relative;
+}
+
+.progress {
+    height: 4px;
+    width: 0;
+    background: #2ecc71;
+    transition: width 2s ease;
+}
+
+#last-update {
+    position: absolute;
+    right: 20px;
+    top: -20px;
+    font-size: 0.7rem;
+    color: var(--muted);
+}
+
+.hero {
+    text-align: center;
+    padding: 5rem 2rem;
+}
+
+h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.role {
+    color: var(--muted);
+    margin-top: 0.5rem;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto 2rem;
+    background: url('profile.jpg') center/cover no-repeat;
+    border: 1px solid #222;
+    box-shadow: 0 0 30px rgba(255,255,255,0.06);
+    transition: 0.4s ease;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.tag:hover {
-    opacity: 0.7;
+.profile-image:hover {
+    transform: scale(1.04);
 }
 
-/* Mini aesthetic boxes */
+.profile-image.active {
+    box-shadow: 0 0 60px rgba(46,204,113,0.5);
+}
+
+.bio {
+    max-width: 750px;
+    margin: 2.5rem auto;
+    color: var(--muted);
+    font-size: 0.98rem;
+}
+
+.tag {
+    display: inline-block;
+    padding: 4px 10px;
+    margin: 0 2px;
+    border: 1px solid #222;
+    background: var(--box);
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--text);
+    cursor: pointer;
+}
+
 .mini-box {
     display: inline-block;
     padding: 3px 8px;
     margin: 0 4px;
     border-radius: 6px;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(255,255,255,0.04);
-    font-size: 0.85rem;
+    border: 1px solid #222;
+    background: #1c1c1c;
+    font-size: 0.8rem;
     font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
 }
 
-.mini-box:hover {
-    background: rgba(255,255,255,0.08);
-}
-
-/* Projects pop */
-.projects-wrapper {
+.projects-frame {
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: 14px;
     padding: 2rem;
-    backdrop-filter: blur(6px);
 }
 
-/* Clean links */
+.work-section {
+    padding: 4rem 2rem;
+    max-width: 900px;
+    margin: auto;
+}
+
+.work-section h2 {
+    font-weight: 800;
+    margin-bottom: 2rem;
+}
+
+.category-toggle {
+    width: 100%;
+    background: var(--box);
+    border: 1px solid #222;
+    padding: 1rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+}
+
+.category-content {
+    display: none;
+    padding: 1rem;
+    border: 1px solid #222;
+    border-top: none;
+    color: var(--muted);
+}
+
+.category-content.active {
+    display: block;
+}
+
+.hobbies {
+    text-align: center;
+    padding: 3rem;
+    background: var(--box);
+}
+
 .clean-link {
+    color: var(--text);
     text-decoration: none;
     font-weight: 600;
-    color: #8ab4ff;
 }
 
-.clean-link:hover {
-    opacity: 0.7;
-}
-
-/* Letterboxd alignment */
 .footer {
     display: flex;
     justify-content: center;
-    padding: 2rem 0;
+    padding: 2rem;
 }
 
 .circles {
     display: flex;
-    gap: 5px;
+    align-items: center;
 }
 
 .circle {
-    width: 10px;
-    height: 10px;
+    height: 14px;
+    width: 14px;
     border-radius: 50%;
-    background: #f2f2f2;
 }
+
+.circle:first-child { background: #FF8000; }
+.circle:nth-child(2) { background: #05E156; transform: translateX(-4px); }
+.circle:nth-child(3) { background: #40BCF4; transform: translateX(-8px); }
