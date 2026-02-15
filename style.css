@@ -243,3 +243,69 @@ h1 {
 .circle:first-child { background: #FF8000; }
 .circle:nth-child(2) { background: #05E156; transform: translateX(-4px); }
 .circle:nth-child(3) { background: #40BCF4; transform: translateX(-8px); }
+/* ========================== */
+/* ROLLING FILM STRIP */
+/* ========================== */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.rolling-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    z-index: 0;
+    mask-image: linear-gradient(to right, 
+        transparent 0%, 
+        black 10%, 
+        black 90%, 
+        transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, 
+        transparent 0%, 
+        black 10%, 
+        black 90%, 
+        transparent 100%);
+}
+
+.rolling-strip {
+    display: flex;
+    gap: 60px;
+    animation: scrollLeft 60s linear infinite;
+    width: max-content;
+}
+
+.rolling-strip img {
+    height: 150px;
+    width: auto;
+    object-fit: cover;
+    opacity: 0.15;
+    filter: grayscale(100%);
+    transition: 0.3s ease;
+}
+
+.rolling-strip img:hover {
+    opacity: 0.4;
+    filter: grayscale(0%);
+}
+
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Make hero content appear above the strip */
+
+.hero-content,
+.profile-image {
+    position: relative;
+    z-index: 2;
+}
