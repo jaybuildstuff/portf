@@ -22,6 +22,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* Remove all blue links globally */
 a {
     color: inherit;
     text-decoration: none;
@@ -104,6 +105,7 @@ a {
     flex-direction: column;
     gap: 20px;
     z-index: 0;
+
     mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
 }
@@ -128,8 +130,13 @@ a {
     filter: grayscale(0%);
 }
 
-.left { animation: scrollLeft 70s linear infinite; }
-.right { animation: scrollRight 70s linear infinite; }
+.left {
+    animation: scrollLeft 70s linear infinite;
+}
+
+.right {
+    animation: scrollRight 70s linear infinite;
+}
 
 @keyframes scrollLeft {
     0% { transform: translateX(0); }
@@ -191,13 +198,24 @@ h1 {
     background: var(--box);
     border-radius: 6px;
     font-weight: 600;
-    font-size: 0.82rem; /* slightly smaller */
+    font-size: 0.85rem;
     cursor: pointer;
-    transition: 0.25s ease;
 }
 
-.tag:hover {
-    background: #1f1f1f;
+.telegram-cta {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.9rem 1.8rem;
+    border: 1px solid #222;
+    background: var(--box);
+    font-weight: 600;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+.telegram-cta:hover {
+    background: #222;
+    transform: translateY(-2px);
 }
 
 /* ================= PROJECTS ================= */
@@ -217,20 +235,14 @@ h1 {
     text-align: left;
 }
 
-/* Improved Category Look (same system, better feel) */
-
-.category {
-    margin-bottom: 1rem;
-}
-
 .category-toggle {
     appearance: none;
+    -webkit-appearance: none;
     background: var(--box);
     border: 1px solid rgba(255,255,255,0.12);
-    padding: 0.85rem 1rem;   /* smaller */
+    padding: 1rem;
     width: 100%;
     font-weight: 600;
-    font-size: 0.9rem;       /* smaller text */
     text-align: left;
     cursor: pointer;
     border-radius: 8px;
@@ -238,7 +250,6 @@ h1 {
     color: var(--text);
     font-family: inherit;
 }
-
 .category-toggle:hover {
     background: #1f1f1f;
 }
@@ -250,7 +261,6 @@ h1 {
     border-top: none;
     border-radius: 0 0 8px 8px;
     color: var(--muted);
-    font-size: 0.9rem;
 }
 
 .category-content.active {
@@ -280,6 +290,11 @@ h1 {
     display: flex;
     justify-content: center;
     padding: 2rem;
+}
+
+.letterboxd-link {
+    display: inline-block;
+    transition: 0.3s ease;
 }
 
 .letterboxd-link:hover {
