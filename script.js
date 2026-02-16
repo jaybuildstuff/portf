@@ -1,37 +1,32 @@
-// Accordion (only one open at a time)
+// Accordion
 document.querySelectorAll(".category-toggle").forEach(button => {
     button.addEventListener("click", () => {
-        const current = button.nextElementSibling;
-
-        document.querySelectorAll(".category-content").forEach(content => {
-            if (content !== current) content.classList.remove("active");
-        });
-
-        current.classList.toggle("active");
+        const content = button.nextElementSibling;
+        content.classList.toggle("active");
     });
 });
 
-// Smooth tag scroll
+// Tag navigation
 document.querySelectorAll(".tag").forEach(tag => {
     tag.addEventListener("click", () => {
-        const target = tag.dataset.target;
+        const target = tag.getAttribute("data-target");
         if (!target) return;
         document.getElementById(target).scrollIntoView({ behavior: "smooth" });
     });
 });
 
-// Progress bar + date
-window.addEventListener("load", () => {
-    document.querySelector(".progress").style.width = "100%";
-    const today = new Date();
-    document.getElementById("last-update").textContent =
-        "Last Updated: " + today.toLocaleDateString();
-});
-
 // Profile glow toggle
 const profile = document.getElementById("profileToggle");
-if (profile) {
-    profile.addEventListener("click", () => {
-        profile.classList.toggle("active");
-    });
-}
+profile.addEventListener("click", () => {
+    profile.classList.toggle("active");
+});
+
+// Progress animation
+window.addEventListener("load", () => {
+    document.querySelector(".progress").style.width = "100%";
+});
+
+// Date
+const today = new Date();
+document.getElementById("last-update").textContent =
+"Last Updated: " + today.toLocaleDateString();
