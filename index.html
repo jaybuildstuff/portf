@@ -6,11 +6,9 @@
     <meta name="description" content="Portfolio of Jay Merete — Director, Writer, and Creative.">
     <title>Jay Merete — Director & Writer</title>
     
-    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Fixed Font URLs (Removed spaces) -->
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     
@@ -19,7 +17,6 @@
 <body>
 
 <!-- UI Elements -->
-<div class="custom-cursor"></div>
 <div class="letterbox top"></div>
 <div class="letterbox bottom"></div>
 <div class="grain"></div>
@@ -31,7 +28,6 @@
         <span id="availability-text">Available for Hire</span>
     </div>
     <div class="social-icons">
-        <!-- Fixed URLs -->
         <a href="https://instagram.com/jay.merete" target="_blank" class="magnetic" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         <a href="mailto:yididyamerete@gmail.com" class="magnetic" aria-label="Email"><i class="fas fa-envelope"></i></a>
         <a href="https://t.me/loose_change" target="_blank" class="magnetic" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
@@ -47,7 +43,6 @@
 <!-- Hero Section -->
 <section class="hero">
    <div class="rolling-container" aria-hidden="true">
-        <!-- Added loading="eager" for above-fold images -->
         <div class="rolling-strip left">
             <img src="images/film1.jpg" alt="Film still"><img src="images/film2.jpg" alt="Film still"><img src="images/film3.jpg" alt="Film still"><img src="images/film4.jpg" alt="Film still"><img src="images/film5.jpg" alt="Film still"><img src="images/film6.jpg" alt="Film still"><img src="images/film7.jpg" alt="Film still">
             <img src="images/film1.jpg" alt="Film still"><img src="images/film2.jpg" alt="Film still"><img src="images/film3.jpg" alt="Film still"><img src="images/film4.jpg" alt="Film still"><img src="images/film5.jpg" alt="Film still"><img src="images/film6.jpg" alt="Film still"><img src="images/film7.jpg" alt="Film still">
@@ -83,7 +78,8 @@
     <div class="hero-content">
         <h1 class="name-container">
             <span class="flip-wrapper">
-                <span id="flip-name">Jay</span>
+                <span id="flip-name-1" class="flip-name active">Jay</span>
+                <span id="flip-name-2" class="flip-name">Yididya</span>
             </span> 
             Merete
         </h1>
@@ -126,7 +122,7 @@
     <h2>Projects</h2>
     <div class="projects-frame">
         <button class="category-toggle">Commercials & Music Video Direction</button>
-        <div id="directing" class="category-content active">
+        <div id="directing" class="category-content">
             <div class="project-grid">
                 <a href="https://youtu.be/QNMWqswdWQY" target="_blank" class="project-item"><img src="images/daggy.jpg" alt="Daggy Project" loading="lazy"></a>
                 <a href="https://youtu.be/rVrnill0Kqs" target="_blank" class="project-item"><img src="images/ante-lij.jpg" alt="Ante Lij Project" loading="lazy"></a>
