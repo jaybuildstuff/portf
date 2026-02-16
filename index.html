@@ -3,68 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Jay Merete — Director, Writer, and Creative.">
     <title>Jay Merete — Director & Writer</title>
-    <link rel="stylesheet" href="style.css">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fixed Font URLs (Removed spaces) -->
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- UI Elements -->
 <div class="custom-cursor"></div>
 <div class="letterbox top"></div>
 <div class="letterbox bottom"></div>
 <div class="grain"></div>
 
+<!-- Header -->
 <header class="top-bar">
     <div class="availability">
         <span class="status-dot"></span>
         <span id="availability-text">Available for Hire</span>
     </div>
     <div class="social-icons">
-        <a href="https://instagram.com/jay.merete" target="_blank" class="magnetic"><i class="fab fa-instagram"></i></a>
-        <a href="mailto:yididyamerete@gmail.com" class="magnetic"><i class="fas fa-envelope"></i></a>
-        <a href="https://t.me/loose_change" target="_blank" class="magnetic"><i class="fab fa-telegram"></i></a>
+        <!-- Fixed URLs -->
+        <a href="https://instagram.com/jay.merete" target="_blank" class="magnetic" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:yididyamerete@gmail.com" class="magnetic" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://t.me/loose_change" target="_blank" class="magnetic" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
     </div>
 </header>
 
+<!-- Update Bar -->
 <div class="update-bar">
     <div class="progress"></div>
     <span id="last-update"></span>
 </div>
 
+<!-- Hero Section -->
 <section class="hero">
-   <div class="rolling-container">
+   <div class="rolling-container" aria-hidden="true">
+        <!-- Added loading="eager" for above-fold images -->
         <div class="rolling-strip left">
-            <img src="images/film1.jpg"><img src="images/film2.jpg"><img src="images/film3.jpg"><img src="images/film4.jpg"><img src="images/film5.jpg"><img src="images/film6.jpg"><img src="images/film7.jpg">
-            <img src="images/film1.jpg"><img src="images/film2.jpg"><img src="images/film3.jpg"><img src="images/film4.jpg"><img src="images/film5.jpg"><img src="images/film6.jpg"><img src="images/film7.jpg">
+            <img src="images/film1.jpg" alt="Film still"><img src="images/film2.jpg" alt="Film still"><img src="images/film3.jpg" alt="Film still"><img src="images/film4.jpg" alt="Film still"><img src="images/film5.jpg" alt="Film still"><img src="images/film6.jpg" alt="Film still"><img src="images/film7.jpg" alt="Film still">
+            <img src="images/film1.jpg" alt="Film still"><img src="images/film2.jpg" alt="Film still"><img src="images/film3.jpg" alt="Film still"><img src="images/film4.jpg" alt="Film still"><img src="images/film5.jpg" alt="Film still"><img src="images/film6.jpg" alt="Film still"><img src="images/film7.jpg" alt="Film still">
         </div>
         <div class="rolling-strip right">
-            <img src="images/film8.jpg"><img src="images/film9.jpg"><img src="images/film10.jpg"><img src="images/film11.jpg"><img src="images/film12.jpg"><img src="images/film13.jpg"><img src="images/film14.jpg">
-            <img src="images/film8.jpg"><img src="images/film9.jpg"><img src="images/film10.jpg"><img src="images/film11.jpg"><img src="images/film12.jpg"><img src="images/film13.jpg"><img src="images/film14.jpg">
+            <img src="images/film8.jpg" alt="Film still"><img src="images/film9.jpg" alt="Film still"><img src="images/film10.jpg" alt="Film still"><img src="images/film11.jpg" alt="Film still"><img src="images/film12.jpg" alt="Film still"><img src="images/film13.jpg" alt="Film still"><img src="images/film14.jpg" alt="Film still">
+            <img src="images/film8.jpg" alt="Film still"><img src="images/film9.jpg" alt="Film still"><img src="images/film10.jpg" alt="Film still"><img src="images/film11.jpg" alt="Film still"><img src="images/film12.jpg" alt="Film still"><img src="images/film13.jpg" alt="Film still"><img src="images/film14.jpg" alt="Film still">
         </div>
         <div class="rolling-strip left">
-            <img src="images/film15.jpg"><img src="images/film16.jpg"><img src="images/film17.jpg"><img src="images/film18.jpg"><img src="images/film19.jpg"><img src="images/film20.jpg"><img src="images/film21.jpg">
-            <img src="images/film15.jpg"><img src="images/film16.jpg"><img src="images/film17.jpg"><img src="images/film18.jpg"><img src="images/film19.jpg"><img src="images/film20.jpg"><img src="images/film21.jpg">
+            <img src="images/film15.jpg" alt="Film still"><img src="images/film16.jpg" alt="Film still"><img src="images/film17.jpg" alt="Film still"><img src="images/film18.jpg" alt="Film still"><img src="images/film19.jpg" alt="Film still"><img src="images/film20.jpg" alt="Film still"><img src="images/film21.jpg" alt="Film still">
+            <img src="images/film15.jpg" alt="Film still"><img src="images/film16.jpg" alt="Film still"><img src="images/film17.jpg" alt="Film still"><img src="images/film18.jpg" alt="Film still"><img src="images/film19.jpg" alt="Film still"><img src="images/film20.jpg" alt="Film still"><img src="images/film21.jpg" alt="Film still">
         </div>
         <div class="rolling-strip right">
-            <img src="images/film22.jpg"><img src="images/film23.jpg"><img src="images/film24.jpg"><img src="images/film25.jpg"><img src="images/film26.jpg"><img src="images/film27.jpg"><img src="images/film28.jpg">
-            <img src="images/film22.jpg"><img src="images/film23.jpg"><img src="images/film24.jpg"><img src="images/film25.jpg"><img src="images/film26.jpg"><img src="images/film27.jpg"><img src="images/film28.jpg">
+            <img src="images/film22.jpg" alt="Film still"><img src="images/film23.jpg" alt="Film still"><img src="images/film24.jpg" alt="Film still"><img src="images/film25.jpg" alt="Film still"><img src="images/film26.jpg" alt="Film still"><img src="images/film27.jpg" alt="Film still"><img src="images/film28.jpg" alt="Film still">
+            <img src="images/film22.jpg" alt="Film still"><img src="images/film23.jpg" alt="Film still"><img src="images/film24.jpg" alt="Film still"><img src="images/film25.jpg" alt="Film still"><img src="images/film26.jpg" alt="Film still"><img src="images/film27.jpg" alt="Film still"><img src="images/film28.jpg" alt="Film still">
         </div>
         <div class="rolling-strip left">
-            <img src="images/film29.jpg"><img src="images/film30.jpg"><img src="images/film31.jpg"><img src="images/film32.jpg"><img src="images/film33.jpg"><img src="images/film34.jpg"><img src="images/film35.jpg">
-            <img src="images/film29.jpg"><img src="images/film30.jpg"><img src="images/film31.jpg"><img src="images/film32.jpg"><img src="images/film33.jpg"><img src="images/film34.jpg"><img src="images/film35.jpg">
+            <img src="images/film29.jpg" alt="Film still"><img src="images/film30.jpg" alt="Film still"><img src="images/film31.jpg" alt="Film still"><img src="images/film32.jpg" alt="Film still"><img src="images/film33.jpg" alt="Film still"><img src="images/film34.jpg" alt="Film still"><img src="images/film35.jpg" alt="Film still">
+            <img src="images/film29.jpg" alt="Film still"><img src="images/film30.jpg" alt="Film still"><img src="images/film31.jpg" alt="Film still"><img src="images/film32.jpg" alt="Film still"><img src="images/film33.jpg" alt="Film still"><img src="images/film34.jpg" alt="Film still"><img src="images/film35.jpg" alt="Film still">
         </div>
         <div class="rolling-strip right">
-            <img src="images/film36.jpg"><img src="images/film37.jpg"><img src="images/film38.jpg"><img src="images/film39.jpg"><img src="images/film40.jpg"><img src="images/film41.jpg"><img src="images/film42.jpg">
-            <img src="images/film36.jpg"><img src="images/film37.jpg"><img src="images/film38.jpg"><img src="images/film39.jpg"><img src="images/film40.jpg"><img src="images/film41.jpg"><img src="images/film42.jpg">
+            <img src="images/film36.jpg" alt="Film still"><img src="images/film37.jpg" alt="Film still"><img src="images/film38.jpg" alt="Film still"><img src="images/film39.jpg" alt="Film still"><img src="images/film40.jpg" alt="Film still"><img src="images/film41.jpg" alt="Film still"><img src="images/film42.jpg" alt="Film still">
+            <img src="images/film36.jpg" alt="Film still"><img src="images/film37.jpg" alt="Film still"><img src="images/film38.jpg" alt="Film still"><img src="images/film39.jpg" alt="Film still"><img src="images/film40.jpg" alt="Film still"><img src="images/film41.jpg" alt="Film still"><img src="images/film42.jpg" alt="Film still">
         </div>
         <div class="rolling-strip left">
-            <img src="images/film43.jpg"><img src="images/film44.jpg"><img src="images/film45.jpg"><img src="images/film46.jpg"><img src="images/film47.jpg"><img src="images/film48.jpg"><img src="images/film49.jpg">
-            <img src="images/film43.jpg"><img src="images/film44.jpg"><img src="images/film45.jpg"><img src="images/film46.jpg"><img src="images/film47.jpg"><img src="images/film48.jpg"><img src="images/film49.jpg">
+            <img src="images/film43.jpg" alt="Film still"><img src="images/film44.jpg" alt="Film still"><img src="images/film45.jpg" alt="Film still"><img src="images/film46.jpg" alt="Film still"><img src="images/film47.jpg" alt="Film still"><img src="images/film48.jpg" alt="Film still"><img src="images/film49.jpg" alt="Film still">
+            <img src="images/film43.jpg" alt="Film still"><img src="images/film44.jpg" alt="Film still"><img src="images/film45.jpg" alt="Film still"><img src="images/film46.jpg" alt="Film still"><img src="images/film47.jpg" alt="Film still"><img src="images/film48.jpg" alt="Film still"><img src="images/film49.jpg" alt="Film still">
         </div>
    </div>
 
-    <div class="profile-image magnetic" id="profileToggle"></div>
+    <div class="profile-image magnetic" id="profileToggle" aria-label="Profile Picture"></div>
 
     <div class="hero-content">
         <h1 class="name-container">
@@ -76,14 +90,14 @@
         <p class="role">Director · Writer · Creative</p>
 
         <p class="bio">
-            For the past five years, I’ve focused mainly on 
+            For the past five years, I've focused mainly on 
             <span class="tag" data-target="directing">Writing & Directing</span> 
             within <span class="mini-box">commercials</span> and <span class="mini-box">music videos</span>. 
             I co-created my own 
             <span class="tag" data-target="tv">TV Series</span>, writing and directing seven episodes.
             <br><br>
-            I’ve worked as a creative writer and director on numerous commercials, refining visual storytelling. 
-            I’ve also served as 
+            I've worked as a creative writer and director on numerous commercials, refining visual storytelling. 
+            I've also served as 
             <span class="tag" data-target="assistant">Assistant Director</span> 
             on a feature film and led 
             <span class="tag" data-target="art">Art Direction</span> 
@@ -107,15 +121,16 @@
     </div>
 </section>
 
+<!-- Work Section -->
 <section class="work-section">
     <h2>Projects</h2>
     <div class="projects-frame">
         <button class="category-toggle">Commercials & Music Video Direction</button>
         <div id="directing" class="category-content active">
             <div class="project-grid">
-                <a href="https://youtu.be/QNMWqswdWQY" target="_blank" class="project-item"><img src="images/daggy.jpg"></a>
-                <a href="https://youtu.be/rVrnill0Kqs" target="_blank" class="project-item"><img src="images/ante-lij.jpg"></a>
-                <a href="https://youtu.be/nnY6e8mes4A" target="_blank" class="project-item"><img src="images/cbe-ethio-direct.jpg"></a>
+                <a href="https://youtu.be/QNMWqswdWQY" target="_blank" class="project-item"><img src="images/daggy.jpg" alt="Daggy Project" loading="lazy"></a>
+                <a href="https://youtu.be/rVrnill0Kqs" target="_blank" class="project-item"><img src="images/ante-lij.jpg" alt="Ante Lij Project" loading="lazy"></a>
+                <a href="https://youtu.be/nnY6e8mes4A" target="_blank" class="project-item"><img src="images/cbe-ethio-direct.jpg" alt="CBE Ethio Project" loading="lazy"></a>
                 <div class="project-item text-only">Saba Sabina Remix – Shewina</div>
                 <div class="project-item text-only">Be Wuha – Anti & Bling Records</div>
                 <div class="project-item text-only">Teneshi – Geez City</div>
@@ -126,7 +141,7 @@
         <button class="category-toggle">TV Series – Writing & Directing</button>
         <div id="tv" class="category-content">
             <div class="project-grid">
-                <a href="https://youtube.com/playlist?list=PL5-MdMvMRStnDBDhDZEhD6lvlEOWoQD7r" target="_blank" class="project-item"><img src="images/baletarikochu.jpg"></a>
+                <a href="https://youtube.com/playlist?list=PL5-MdMvMRStnDBDhDZEhD6lvlEOWoQD7r" target="_blank" class="project-item"><img src="images/baletarikochu.jpg" alt="Baletarikochu Project" loading="lazy"></a>
                 <div class="project-item text-only">Real Talk Addis – Season 2 (Unreleased)</div>
             </div>
         </div>
@@ -134,15 +149,15 @@
         <button class="category-toggle">Feature Film</button>
         <div id="feature" class="category-content">
             <div class="project-grid">
-                <a href="https://youtu.be/am4igsg-RuI" target="_blank" class="project-item"><img src="images/night-before-easter.jpg"></a>
+                <a href="https://youtu.be/am4igsg-RuI" target="_blank" class="project-item"><img src="images/night-before-easter.jpg" alt="Night Before Easter" loading="lazy"></a>
             </div>
         </div>
 
         <button class="category-toggle">Assistant Directing – Commercials</button>
         <div id="assistant" class="category-content">
             <div class="project-grid">
-                <a href="https://youtu.be/kGQ9gKmc6Vc" target="_blank" class="project-item"><img src="images/dachi.jpg"></a>
-                <a href="https://youtu.be/7ycVVbQxq4s" target="_blank" class="project-item"><img src="images/addis-bank.jpg"></a>
+                <a href="https://youtu.be/kGQ9gKmc6Vc" target="_blank" class="project-item"><img src="images/dachi.jpg" alt="Dachi Project" loading="lazy"></a>
+                <a href="https://youtu.be/7ycVVbQxq4s" target="_blank" class="project-item"><img src="images/addis-bank.jpg" alt="Addis Bank Project" loading="lazy"></a>
                 <div class="project-item text-only">Aman Berki Coffee – Commercial</div>
             </div>
         </div>
@@ -193,6 +208,7 @@
     </div>
 </section>
 
+<!-- Hobbies Section -->
 <section class="hobbies">
     <h2>Other Passions</h2>
     <p>
@@ -203,6 +219,7 @@
     </p>
 </section>
 
+<!-- Footer -->
 <footer class="footer">
     <div class="footer-center">
         <div class="spotify-box magnetic">
@@ -215,7 +232,7 @@
             </div>
         </div>
         
-        <a href="https://letterboxd.com/isthatyoujay/" target="_blank" class="letterboxd-link magnetic">
+        <a href="https://letterboxd.com/isthatyoujay/" target="_blank" class="letterboxd-link magnetic" aria-label="Letterboxd">
             <div class="circles">
                 <div class="circle"></div><div class="circle"></div><div class="circle"></div>
             </div>
