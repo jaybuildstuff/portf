@@ -352,3 +352,54 @@ h1 {
 .circle:first-child { background: #FF8000; }
 .circle:nth-child(2) { background: #05E156; transform: translateX(-4px); }
 .circle:nth-child(3) { background: #40BCF4; transform: translateX(-8px); }
+/* ============================ */
+/* CATEGORY SECTIONS */
+/* ============================ */
+
+.category-section {
+    margin: 80px 0;
+}
+
+.category-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 16px;
+}
+
+.project-item {
+    display: block;
+    font-size: 0.75rem;
+    color: #aaa;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.project-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    filter: grayscale(100%);
+    opacity: 0.8;
+    transition: 0.3s ease;
+}
+
+.project-item:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.text-only {
+    padding: 20px 10px;
+    background: #111;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
