@@ -55,7 +55,7 @@ body.cinematic .letterbox { height: 10vh; }
     font-size: clamp(2.5rem, 8vw, 4rem); 
     font-weight: 800; 
     display: flex; 
-    flex-direction: column; /* Stack vertically */
+    flex-direction: column;
     justify-content: center; 
     gap: 5px;
     margin-bottom: 0.5rem; 
@@ -192,7 +192,6 @@ body.cinematic .letterbox { height: 10vh; }
     font-size: 0.9rem;
 }
 .contact-btn i { font-size: 1rem; }
-/* PERMANENT GLOW */
 .contact-btn.glow-permanent {
     border-color: var(--accent);
     box-shadow: 0 0 20px rgba(46, 204, 113, 0.3);
