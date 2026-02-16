@@ -199,7 +199,39 @@ header p {
 .clean-link:hover {
     text-decoration: underline;
 }
+/* ================= PROJECT GRID IMPROVEMENT ================= */
 
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.project-card {
+    background: var(--box);
+    padding: 1rem;
+    border-radius: 12px;
+    transition: 0.3s ease;
+    display: block;
+    color: var(--text);
+}
+
+.project-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 0.8rem;
+}
+
+.project-card span {
+    display: block;
+    font-size: 0.9rem;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    background: #1f1f1f;
+}
 /* ================= FOOTER ================= */
 
 footer {
