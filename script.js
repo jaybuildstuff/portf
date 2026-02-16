@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // 1. NAME FLIP ANIMATION - FIXED ALIGNMENT
+    // 1. NAME FLIP ANIMATION
     const name1 = document.getElementById('flip-name-1');
     const name2 = document.getElementById('flip-name-2');
     const names = [name1, name2];
@@ -23,12 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 500);
     }
 
-    // Start flipping after initial delay
     setTimeout(() => {
         flipInterval = setInterval(flipName, 3000);
     }, 2000);
 
-    // Pause animation when tab is not visible (performance)
+    // Pause animation when tab is not visible
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
             clearInterval(flipInterval);
@@ -63,31 +62,29 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 3. MAGNETIC BUTTON EFFECT - OPTIMIZED FOR MOBILE
+    // 3. MAGNETIC BUTTON - DISABLED ON MOBILE FOR PERFORMANCE
     const isMobile = window.innerWidth <= 768;
     
-    document.querySelectorAll('.magnetic').forEach(btn => {
-        // Skip magnetic effect on mobile for better performance
-        if (isMobile) return;
-        
-        btn.addEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
+    if (!isMobile) {
+        document.querySelectorAll('.magnetic').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
             
-            const strength = 0.3;
-            btn.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = `translate(0px, 0px)`;
+                btn.style.transition = "transform 0.3s ease";
+            });
+            
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transition = "transform 0.1s ease";
+            });
         });
-        
-        btn.addEventListener('mouseleave', () => {
-            btn.style.transform = `translate(0px, 0px)`;
-            btn.style.transition = "transform 0.3s ease";
-        });
-        
-        btn.addEventListener('mouseenter', () => {
-            btn.style.transition = "transform 0.1s ease";
-        });
-    });
+    }
 
     // 4. UI INITIALIZATION
     const bar = document.querySelector(".progress");
@@ -127,7 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // 6. YOUTUBE THUMBNAIL FALLBACK
     document.querySelectorAll('.project-item img').forEach(img => {
         img.addEventListener('error', () => {
-            // Fallback to placeholder if image fails to load
             img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="130" viewBox="0 0 200 130"%3E%3Crect fill="%23111" width="200" height="130"/%3E%3Ctext fill="%23333" x="50%25" y="50%25" text-anchor="middle" dy=".3em" font-family="sans-serif" font-size="14"%3ENo Preview%3C/text%3E%3C/svg%3E';
         });
     });
