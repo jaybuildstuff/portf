@@ -20,6 +20,7 @@ body {
     color: var(--text);
     line-height: 1.8;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
 
 /* Remove all blue links globally */
@@ -52,6 +53,32 @@ a {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 3rem;
+    position: relative;
+    z-index: 5;
+}
+
+.availability {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #2ecc71;
+    border-radius: 50%;
+    margin-right: 8px;
+    box-shadow: 0 0 8px #2ecc71;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
 }
 
 .social-icons a {
@@ -71,6 +98,7 @@ a {
     height: 4px;
     background: #111;
     position: relative;
+    z-index: 5;
 }
 
 .progress {
@@ -130,13 +158,8 @@ a {
     filter: grayscale(0%);
 }
 
-.left {
-    animation: scrollLeft 70s linear infinite;
-}
-
-.right {
-    animation: scrollRight 70s linear infinite;
-}
+.left { animation: scrollLeft 70s linear infinite; }
+.right { animation: scrollRight 70s linear infinite; }
 
 @keyframes scrollLeft {
     0% { transform: translateX(0); }
@@ -172,7 +195,6 @@ a {
     transform: scale(1.04);
 }
 
-/* Profile Toggle Active State (Matches your JS) */
 .profile-image.active {
     box-shadow: 0 0 50px rgba(46, 204, 113, 0.2);
     border-color: #2ecc71;
@@ -206,6 +228,21 @@ h1 {
     font-weight: 600;
     font-size: 0.85rem;
     cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.tag:hover {
+    border-color: #444;
+    background: #1f1f1f;
+}
+
+.mini-box {
+    background: rgba(255,255,255,0.05);
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.9rem;
+    color: var(--text);
 }
 
 .telegram-cta {
@@ -233,6 +270,11 @@ h1 {
     text-align: center;
 }
 
+.work-section h2 {
+    margin-bottom: 2rem;
+    font-weight: 800;
+}
+
 .projects-frame {
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: 14px;
@@ -243,9 +285,10 @@ h1 {
 
 .category-toggle {
     appearance: none;
+    -webkit-appearance: none;
     background: var(--box);
     border: 1px solid rgba(255,255,255,0.12);
-    padding: 1rem;
+    padding: 1.2rem;
     width: 100%;
     font-weight: 600;
     text-align: left;
@@ -254,11 +297,21 @@ h1 {
     transition: 0.25s ease;
     color: var(--text);
     font-family: inherit;
-    margin-top: 10px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.category-toggle::after {
+    content: '+';
+    font-size: 1.2rem;
+    opacity: 0.5;
 }
 
 .category-toggle:hover {
     background: #1f1f1f;
+    border-color: rgba(255,255,255,0.2);
 }
 
 .category-content {
@@ -279,7 +332,7 @@ h1 {
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 18px;
 }
 
@@ -287,13 +340,11 @@ h1 {
     display: block;
     text-align: center;
     transition: 0.3s ease;
-    font-size: 0.75rem;
-    color: var(--muted);
 }
 
 .project-item img {
     width: 100%;
-    height: 160px;
+    height: 180px;
     object-fit: cover;
     border-radius: 8px;
     filter: grayscale(100%);
@@ -322,27 +373,34 @@ h1 {
     font-size: 0.75rem;
     color: var(--muted);
     transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .text-only:hover {
     background: #1a1a1a;
+    color: var(--text);
 }
 
 /* ================= HOBBIES ================= */
 
 .hobbies {
     text-align: center;
-    padding: 3rem;
+    padding: 4rem 2rem;
     background: var(--box);
 }
 
 .clean-link {
     font-weight: 600;
     transition: 0.3s ease;
+    border-bottom: 1px solid transparent;
 }
 
 .clean-link:hover {
     opacity: 0.8;
+    border-bottom: 1px solid var(--muted);
 }
 
 /* ================= FOOTER ================= */
@@ -350,7 +408,7 @@ h1 {
 .footer {
     display: flex;
     justify-content: center;
-    padding: 2rem;
+    padding: 3rem;
 }
 
 .letterboxd-link {
@@ -368,8 +426,8 @@ h1 {
 }
 
 .circle {
-    height: 14px;
-    width: 14px;
+    height: 16px;
+    width: 16px;
     border-radius: 50%;
 }
 
