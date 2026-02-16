@@ -42,7 +42,7 @@ a {
     background: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
     background-size: 3px 3px;
     opacity: 0.2;
-    z-index: 1; /* Added to keep grain slightly above background but behind content */
+    z-index: 1;
 }
 
 /* ================= TOP BAR ================= */
@@ -106,7 +106,6 @@ a {
     flex-direction: column;
     gap: 20px;
     z-index: 0;
-    /* Prefixes for browser compatibility */
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
     mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
 }
@@ -131,8 +130,13 @@ a {
     filter: grayscale(0%);
 }
 
-.left { animation: scrollLeft 70s linear infinite; }
-.right { animation: scrollRight 70s linear infinite; }
+.left {
+    animation: scrollLeft 70s linear infinite;
+}
+
+.right {
+    animation: scrollRight 70s linear infinite;
+}
 
 @keyframes scrollLeft {
     0% { transform: translateX(0); }
@@ -164,7 +168,15 @@ a {
     cursor: pointer;
 }
 
-.profile-image:hover { transform: scale(1.04); }
+.profile-image:hover {
+    transform: scale(1.04);
+}
+
+/* Profile Toggle Active State (Matches your JS) */
+.profile-image.active {
+    box-shadow: 0 0 50px rgba(46, 204, 113, 0.2);
+    border-color: #2ecc71;
+}
 
 h1 {
     font-size: 2.8rem;
@@ -172,7 +184,10 @@ h1 {
     letter-spacing: -1px;
 }
 
-.role { color: var(--muted); margin-top: 0.5rem; }
+.role {
+    color: var(--muted);
+    margin-top: 0.5rem;
+}
 
 .bio {
     max-width: 750px;
@@ -228,7 +243,6 @@ h1 {
 
 .category-toggle {
     appearance: none;
-    -webkit-appearance: none;
     background: var(--box);
     border: 1px solid rgba(255,255,255,0.12);
     padding: 1rem;
@@ -243,18 +257,25 @@ h1 {
     margin-top: 10px;
 }
 
-.category-toggle:hover { background: #1f1f1f; }
+.category-toggle:hover {
+    background: #1f1f1f;
+}
 
 .category-content {
     display: none;
+    opacity: 0;
     padding: 1.5rem;
     border: 1px solid rgba(255,255,255,0.08);
     border-top: none;
     border-radius: 0 0 8px 8px;
     background: #121212;
+    transition: opacity 0.4s ease;
 }
 
-.category-content.active { display: block; }
+.category-content.active {
+    display: block;
+    opacity: 1;
+}
 
 .project-grid {
     display: grid;
@@ -266,6 +287,8 @@ h1 {
     display: block;
     text-align: center;
     transition: 0.3s ease;
+    font-size: 0.75rem;
+    color: var(--muted);
 }
 
 .project-item img {
@@ -301,7 +324,9 @@ h1 {
     transition: 0.3s ease;
 }
 
-.text-only:hover { background: #1a1a1a; }
+.text-only:hover {
+    background: #1a1a1a;
+}
 
 /* ================= HOBBIES ================= */
 
@@ -311,8 +336,14 @@ h1 {
     background: var(--box);
 }
 
-.clean-link { font-weight: 600; transition: 0.3s ease; }
-.clean-link:hover { opacity: 0.8; }
+.clean-link {
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.clean-link:hover {
+    opacity: 0.8;
+}
 
 /* ================= FOOTER ================= */
 
@@ -327,7 +358,9 @@ h1 {
     transition: 0.3s ease;
 }
 
-.letterboxd-link:hover { transform: translateY(-2px); }
+.letterboxd-link:hover {
+    transform: translateY(-2px);
+}
 
 .circles {
     display: flex;
