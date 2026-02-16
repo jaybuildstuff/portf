@@ -1,23 +1,25 @@
-// 1. NAME SWAP LOGIC
-const nameElement = document.getElementById('name-swap');
+// 1. ADVANCED NAME FLIP (2s Interval)
+const nameEl = document.getElementById('flip-name');
 const names = ["Jay", "Yididya"];
-let nameIndex = 0;
+let index = 0;
 
-function swapName() {
-    nameElement.classList.add('name-exit');
+function flipName() {
+    nameEl.classList.add('flip-up'); // Roll up & vanish
     
     setTimeout(() => {
-        nameIndex = (nameIndex + 1) % names.length;
-        nameElement.textContent = names[nameIndex];
-        nameElement.classList.remove('name-exit');
-        nameElement.classList.add('name-enter');
+        index = (index + 1) % names.length;
+        nameEl.textContent = names[index];
+        nameEl.classList.remove('flip-up');
+        nameEl.classList.add('flip-down'); // Prepared at bottom
+        
+        setTimeout(() => {
+            nameEl.classList.remove('flip-down'); // Slide into center
+        }, 50);
     }, 400);
 }
+setInterval(flipName, 2000);
 
-// Swaps name every 4 seconds
-setInterval(swapName, 4000);
-
-// 2. ACCORDION LOGIC
+// 2. ACCORDION & CINEMATIC BARS
 const toggles = document.querySelectorAll('.category-toggle');
 const contents = document.querySelectorAll('.category-content');
 
@@ -25,7 +27,9 @@ toggles.forEach(toggle => {
     toggle.addEventListener('click', () => {
         const content = toggle.nextElementSibling;
         const isActive = content.classList.contains('active');
+        
         contents.forEach(c => c.classList.remove('active'));
+        
         if (!isActive) {
             content.classList.add('active');
             document.body.classList.add('cinematic');
@@ -35,41 +39,38 @@ toggles.forEach(toggle => {
     });
 });
 
-// 3. TAG NAVIGATION
-document.querySelectorAll(".tag").forEach(tag => {
-    tag.addEventListener("click", () => {
-        const targetId = tag.getAttribute("data-target");
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-            contents.forEach(c => c.classList.remove('active'));
-            targetSection.classList.add('active');
-            document.body.classList.add('cinematic');
-            targetSection.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-    });
+// 3. CURSOR & MAGNETIC LOGIC
+const cursor = document.querySelector('.custom-cursor');
+document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
 });
 
-// 4. MAGNETIC EFFECT
-document.querySelectorAll('.magnetic').forEach(el => {
-    el.addEventListener('mousemove', (e) => {
-        const rect = el.getBoundingClientRect();
+document.querySelectorAll('a, button, .tag, .magnetic').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+});
+
+document.querySelectorAll('.magnetic').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
-        el.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
     });
-    el.addEventListener('mouseleave', () => {
-        el.style.transform = `translate(0px, 0px)`;
+    btn.addEventListener('mouseleave', () => {
+        btn.style.transform = `translate(0px, 0px)`;
     });
 });
 
-// 5. INITIALIZATION
+// 4. UI INITIALIZATION
 window.addEventListener("load", () => {
+    // Update bar
     const bar = document.querySelector(".progress");
-    if (bar) setTimeout(() => { bar.style.width = "100%"; }, 300);
+    if (bar) setTimeout(() => bar.style.width = "100%", 500);
 
-    const updateText = document.getElementById("last-update");
-    if (updateText) {
-        const now = new Date();
-        updateText.textContent = `LAST UPDATED: ${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()}`;
-    }
+    // Dynamic Date
+    const updateEl = document.getElementById('last-update');
+    const now = new Date();
+    if(updateEl) updateEl.innerText = `LAST UPDATE: ${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()}`;
 });
