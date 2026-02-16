@@ -1,8 +1,16 @@
-// Accordion
 document.querySelectorAll(".category-toggle").forEach(button => {
     button.addEventListener("click", () => {
-        const content = button.nextElementSibling;
-        content.classList.toggle("active");
+
+        const allContents = document.querySelectorAll(".category-content");
+        const currentContent = button.nextElementSibling;
+
+        allContents.forEach(content => {
+            if (content !== currentContent) {
+                content.classList.remove("active");
+            }
+        });
+
+        currentContent.classList.toggle("active");
     });
 });
 
@@ -15,13 +23,15 @@ document.querySelectorAll(".tag").forEach(tag => {
     });
 });
 
-// Profile glow toggle
+// Profile glow
 const profile = document.getElementById("profileToggle");
-profile.addEventListener("click", () => {
-    profile.classList.toggle("active");
-});
+if (profile) {
+    profile.addEventListener("click", () => {
+        profile.classList.toggle("active");
+    });
+}
 
-// Progress animation
+// Progress bar
 window.addEventListener("load", () => {
     document.querySelector(".progress").style.width = "100%";
 });
