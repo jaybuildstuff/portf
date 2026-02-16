@@ -1,5 +1,5 @@
 :root {
-    --bg1: #0e0e0e;
+    --bg: #0e0e0e;
     --text: #f2f2f2;
     --muted: #9b9b9b;
     --box: #171717;
@@ -7,22 +7,28 @@
     --spotify: #1DB954;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; cursor: auto; }
+* { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
 
 body {
     font-family: 'Manrope', sans-serif;
-    background: #0e0e0e; color: var(--text);
+    background: var(--bg); color: var(--text);
     line-height: 1.8; overflow-x: hidden; text-align: center;
 }
 
-a { color: inherit !important; text-decoration: none !important; transition: 0.3s; }
+/* CURSOR & CINEMATIC EFFECTS */
+.custom-cursor {
+    width: 20px; height: 20px; border: 1px solid rgba(255,255,255,0.8);
+    border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999;
+    transition: transform 0.15s ease-out; mix-blend-mode: difference;
+}
+.custom-cursor.active { transform: scale(3); background: rgba(255,255,255,0.15); }
 
-/* CINEMATIC BARS */
 .letterbox {
     position: fixed; left: 0; width: 100%; height: 0vh;
-    background: black; z-index: 9998; transition: 0.6s ease;
+    background: black; z-index: 9998; transition: 0.6s cubic-bezier(0.7, 0, 0.3, 1);
 }
 body.cinematic .letterbox { height: 8vh; }
+.letterbox.top { top: 0; } .letterbox.bottom { bottom: 0; }
 
 .grain {
     position: fixed; width: 100%; height: 100%; pointer-events: none;
@@ -30,98 +36,68 @@ body.cinematic .letterbox { height: 8vh; }
     background-size: 3px 3px; opacity: 0.2; z-index: 1;
 }
 
-/* ================= NAME SWAP EFFECT ================= */
-#name-swap {
-    display: inline-block;
-    transition: opacity 0.4s ease, transform 0.4s ease, filter 0.4s ease;
-}
-.name-exit { opacity: 0; transform: translateY(-5px); filter: blur(5px); }
-.name-enter { opacity: 1; transform: translateY(0); filter: blur(0); }
+/* TOP BAR */
+.top-bar { display: flex; justify-content: space-between; padding: 2rem 3rem; z-index: 10; position: relative; }
+.status-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block; margin-right: 8px; box-shadow: 0 0 10px var(--accent); }
+.social-icons a { margin-left: 20px; font-size: 1.2rem; }
 
-/* ================= HERO ================= */
-.hero { position: relative; padding: 6rem 1rem; width: 100%; }
-.hero-content { position: relative; z-index: 5; max-width: 800px; margin: 0 auto; }
+/* NAME FLIP ANIMATION (PRO MODE) */
+.name-container { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 800; display: flex; justify-content: center; gap: 15px; perspective: 1000px; }
+.flip-wrapper { display: inline-block; height: 1.2em; position: relative; width: 150px; }
+#flip-name { display: block; width: 100%; transition: transform 0.6s cubic-bezier(0.6, -0.28, 0.735, 0.045), opacity 0.3s; }
+.flip-up { transform: rotateX(90deg) translateY(-20px); opacity: 0; }
+.flip-down { transform: rotateX(-90deg) translateY(20px); opacity: 0; }
 
-.profile-image {
-    width: 180px; height: 180px; border-radius: 50%; margin: 0 auto 2rem;
-    background: url('profile.jpg') center/cover no-repeat;
-    border: 1px solid #222; transition: 0.4s;
-}
-
-.tag {
-    display: inline-block; padding: 4px 12px; margin: 4px; border: 1px solid #222;
-    background: var(--box); border-radius: 6px; font-weight: 600; font-size: 0.85rem;
-    cursor: pointer;
-}
-.tag:hover { border-color: var(--accent); color: white !important; }
-
-/* ================= TELEGRAM MESSAGE BOX (EFFECTS) ================= */
-.telegram-cta {
-    display: inline-block; position: relative; margin-top: 3rem; 
-    padding: 1rem 2.5rem; background: var(--box); 
-    border: 1px solid rgba(46, 204, 113, 0.2);
-    border-radius: 12px; font-weight: 800; overflow: hidden;
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.telegram-cta:hover {
-    border-color: var(--accent);
-    box-shadow: 0 0 20px rgba(46, 204, 113, 0.15);
-    transform: translateY(-3px);
-}
-
-/* Subtle Green "Pulse" scan effect */
-.telegram-cta::before {
-    content: ""; position: absolute; top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(46, 204, 113, 0.05), transparent);
-    transition: 0.5s;
-}
-.telegram-cta:hover::before { left: 100%; }
-
-/* ================= ROLLING STRIPS ================= */
-.rolling-container {
-    position: absolute; top: 0; left: 0; width: 100%; opacity: 0.1; z-index: 0; pointer-events: none;
-}
-.rolling-strip { display: flex; gap: 40px; margin-bottom: 20px; }
-.rolling-strip img { height: 100px; filter: grayscale(100%); }
-.left { animation: scroll 90s linear infinite; }
+/* ROLLING STRIPS */
+.rolling-container { position: absolute; top: 0; left: 0; width: 100%; opacity: 0.08; pointer-events: none; }
+.rolling-strip { display: flex; gap: 40px; margin-bottom: 25px; }
+.rolling-strip img { height: 110px; filter: grayscale(100%); }
+.left { animation: scroll 100s linear infinite; }
+.right { animation: scroll 100s linear infinite reverse; }
 @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-/* ================= PROJECTS ================= */
+/* HERO CONTENT */
+.hero { position: relative; padding: 6rem 1rem; width: 100%; }
+.hero-content { position: relative; z-index: 5; max-width: 800px; margin: 0 auto; }
+.profile-image {
+    width: 180px; height: 180px; border-radius: 50%; margin: 0 auto 2.5rem;
+    background: url('profile.jpg') center/cover; border: 1px solid #222;
+}
+.tag { display: inline-block; padding: 4px 12px; margin: 4px; border: 1px solid #222; background: var(--box); border-radius: 6px; cursor: pointer; }
+.mini-box { background: rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 4px; color: var(--text); }
+
+/* TELEGRAM CTA */
+.telegram-cta {
+    display: inline-block; padding: 1rem 2.5rem; background: var(--box); 
+    border-radius: 12px; font-weight: 800; margin-top: 2rem; border: 1px solid #222;
+    transition: 0.4s; position: relative; overflow: hidden;
+}
+.telegram-cta:hover { border-color: var(--accent); box-shadow: 0 0 20px rgba(46, 204, 113, 0.2); transform: translateY(-3px); }
+
+/* PROJECTS */
 .work-section { padding: 4rem 1.5rem; max-width: 950px; margin: 0 auto; }
 .projects-frame { border: 1px solid #222; border-radius: 14px; padding: 2rem; background: rgba(0,0,0,0.2); text-align: left; }
 .category-toggle {
     background: var(--box); border: 1px solid #222; padding: 1.2rem; width: 100%;
-    font-weight: 600; text-align: left; border-radius: 8px; color: var(--text); margin-top: 10px;
+    font-weight: 600; text-align: left; border-radius: 8px; color: var(--text); margin-top: 10px; cursor: pointer;
 }
-.category-content { display: none; padding: 2rem 1rem; background: #0c0c0c; border: 1px solid #1a1a1a; }
-.category-content.active { display: block; animation: fadeIn 0.4s ease forwards; }
+.category-content { display: none; padding: 2rem 1rem; }
+.category-content.active { display: block; animation: slideIn 0.5s ease; }
 .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
-.project-item img { width: 100%; height: 130px; object-fit: cover; border-radius: 8px; opacity: 0.7; }
-.text-only { padding: 15px; background: #111; border-radius: 8px; font-size: 0.8rem; border: 1px solid #222; text-align: center; color: var(--muted); }
+.project-item img { width: 100%; height: 130px; object-fit: cover; border-radius: 8px; opacity: 0.7; transition: 0.3s; }
+.project-item:hover img { opacity: 1; transform: scale(1.05); }
+.text-only { padding: 15px; background: #111; border-radius: 8px; border: 1px solid #222; font-size: 0.8rem; text-align: center; color: var(--muted); }
 
-/* ================= FOOTER & SPOTIFY ================= */
-.footer { padding: 5rem 1rem; display: flex; flex-direction: column; align-items: center; }
-.footer-wrap { display: flex; flex-direction: column; align-items: center; gap: 2rem; }
-
-.currently-enjoying {
-    padding: 12px 24px; background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08); border-radius: 50px;
-}
-.spotify-card { display: flex; align-items: center; gap: 15px; }
-
-/* Equalizer */
-.equalizer { display: flex; align-items: flex-end; gap: 3px; height: 16px; }
-.bar { width: 3px; background: var(--spotify); border-radius: 2px; animation: bounce 1s ease-in-out infinite; }
-.bar:nth-child(2) { animation-delay: 0.2s; }
-.bar:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes bounce { 0%, 100% { height: 30%; } 50% { height: 100%; } }
-
-.spotify-info { text-align: left; }
-.status-label { font-size: 0.6rem; text-transform: uppercase; color: var(--muted); display: block; }
-.album-link { font-size: 0.85rem; font-weight: 600; color: var(--text) !important; }
+/* FOOTER & SPOTIFY */
+.footer { padding: 5rem 1rem; border-top: 1px solid #111; }
+.footer-center { display: flex; flex-direction: column; align-items: center; gap: 2.5rem; }
+.spotify-box { display: flex; align-items: center; gap: 15px; padding: 12px 25px; background: rgba(255,255,255,0.03); border: 1px solid #222; border-radius: 50px; }
+.eq { display: flex; align-items: flex-end; gap: 3px; height: 16px; }
+.bar { width: 3px; background: var(--spotify); animation: eq-pulse 1s infinite alternate; }
+@keyframes eq-pulse { 0% { height: 30%; } 100% { height: 100%; } }
+.spotify-info { text-align: left; line-height: 1.2; }
+.now-playing { font-size: 0.6rem; color: var(--muted); }
+.song-title { font-size: 0.85rem; font-weight: 600; }
 
 .circles { display: flex; align-items: center; }
 .circle { height: 16px; width: 16px; border-radius: 50%; }
@@ -129,9 +105,8 @@ body.cinematic .letterbox { height: 8vh; }
 .circle:nth-child(2) { background: #05E156; transform: translateX(-5px); }
 .circle:nth-child(3) { background: #40BCF4; transform: translateX(-10px); }
 
-/* Update bar */
-.update-bar { height: 2px; background: #222; position: relative; }
-.progress { height: 100%; width: 0; background: var(--accent); transition: 2s ease; }
+.update-bar { height: 2px; background: #111; position: relative; }
+.progress { height: 100%; width: 0; background: var(--accent); transition: 2s; }
 #last-update { position: absolute; right: 20px; top: -20px; font-size: 0.7rem; color: var(--muted); }
 
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
