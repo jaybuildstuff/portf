@@ -10,6 +10,7 @@
 </head>
 <body>
 
+<div class="custom-cursor"></div>
 <div class="letterbox top"></div>
 <div class="letterbox bottom"></div>
 <div class="grain"></div>
@@ -34,23 +35,44 @@
 <section class="hero">
    <div class="rolling-container">
         <div class="rolling-strip left">
-            <img src="images/film1.jpg" loading="lazy"><img src="images/film2.jpg" loading="lazy"><img src="images/film3.jpg" loading="lazy"><img src="images/film4.jpg" loading="lazy"><img src="images/film5.jpg" loading="lazy"><img src="images/film6.jpg" loading="lazy"><img src="images/film7.jpg" loading="lazy">
-            <img src="images/film1.jpg" loading="lazy"><img src="images/film2.jpg" loading="lazy"><img src="images/film3.jpg" loading="lazy"><img src="images/film4.jpg" loading="lazy"><img src="images/film5.jpg" loading="lazy"><img src="images/film6.jpg" loading="lazy"><img src="images/film7.jpg" loading="lazy">
+            <img src="images/film1.jpg"><img src="images/film2.jpg"><img src="images/film3.jpg"><img src="images/film4.jpg"><img src="images/film5.jpg"><img src="images/film6.jpg"><img src="images/film7.jpg">
+            <img src="images/film1.jpg"><img src="images/film2.jpg"><img src="images/film3.jpg"><img src="images/film4.jpg"><img src="images/film5.jpg"><img src="images/film6.jpg"><img src="images/film7.jpg">
         </div>
         <div class="rolling-strip right">
-            <img src="images/film8.jpg" loading="lazy"><img src="images/film9.jpg" loading="lazy"><img src="images/film10.jpg" loading="lazy"><img src="images/film11.jpg" loading="lazy"><img src="images/film12.jpg" loading="lazy"><img src="images/film13.jpg" loading="lazy"><img src="images/film14.jpg" loading="lazy">
-            <img src="images/film8.jpg" loading="lazy"><img src="images/film9.jpg" loading="lazy"><img src="images/film10.jpg" loading="lazy"><img src="images/film11.jpg" loading="lazy"><img src="images/film12.jpg" loading="lazy"><img src="images/film13.jpg" loading="lazy"><img src="images/film14.jpg" loading="lazy">
+            <img src="images/film8.jpg"><img src="images/film9.jpg"><img src="images/film10.jpg"><img src="images/film11.jpg"><img src="images/film12.jpg"><img src="images/film13.jpg"><img src="images/film14.jpg">
+            <img src="images/film8.jpg"><img src="images/film9.jpg"><img src="images/film10.jpg"><img src="images/film11.jpg"><img src="images/film12.jpg"><img src="images/film13.jpg"><img src="images/film14.jpg">
         </div>
         <div class="rolling-strip left">
-            <img src="images/film15.jpg" loading="lazy"><img src="images/film16.jpg" loading="lazy"><img src="images/film17.jpg" loading="lazy"><img src="images/film18.jpg" loading="lazy"><img src="images/film19.jpg" loading="lazy"><img src="images/film20.jpg" loading="lazy"><img src="images/film21.jpg" loading="lazy">
-            <img src="images/film15.jpg" loading="lazy"><img src="images/film16.jpg" loading="lazy"><img src="images/film17.jpg" loading="lazy"><img src="images/film18.jpg" loading="lazy"><img src="images/film19.jpg" loading="lazy"><img src="images/film20.jpg" loading="lazy"><img src="images/film21.jpg" loading="lazy">
+            <img src="images/film15.jpg"><img src="images/film16.jpg"><img src="images/film17.jpg"><img src="images/film18.jpg"><img src="images/film19.jpg"><img src="images/film20.jpg"><img src="images/film21.jpg">
+            <img src="images/film15.jpg"><img src="images/film16.jpg"><img src="images/film17.jpg"><img src="images/film18.jpg"><img src="images/film19.jpg"><img src="images/film20.jpg"><img src="images/film21.jpg">
+        </div>
+        <div class="rolling-strip right">
+            <img src="images/film22.jpg"><img src="images/film23.jpg"><img src="images/film24.jpg"><img src="images/film25.jpg"><img src="images/film26.jpg"><img src="images/film27.jpg"><img src="images/film28.jpg">
+            <img src="images/film22.jpg"><img src="images/film23.jpg"><img src="images/film24.jpg"><img src="images/film25.jpg"><img src="images/film26.jpg"><img src="images/film27.jpg"><img src="images/film28.jpg">
+        </div>
+        <div class="rolling-strip left">
+            <img src="images/film29.jpg"><img src="images/film30.jpg"><img src="images/film31.jpg"><img src="images/film32.jpg"><img src="images/film33.jpg"><img src="images/film34.jpg"><img src="images/film35.jpg">
+            <img src="images/film29.jpg"><img src="images/film30.jpg"><img src="images/film31.jpg"><img src="images/film32.jpg"><img src="images/film33.jpg"><img src="images/film34.jpg"><img src="images/film35.jpg">
+        </div>
+        <div class="rolling-strip right">
+            <img src="images/film36.jpg"><img src="images/film37.jpg"><img src="images/film38.jpg"><img src="images/film39.jpg"><img src="images/film40.jpg"><img src="images/film41.jpg"><img src="images/film42.jpg">
+            <img src="images/film36.jpg"><img src="images/film37.jpg"><img src="images/film38.jpg"><img src="images/film39.jpg"><img src="images/film40.jpg"><img src="images/film41.jpg"><img src="images/film42.jpg">
+        </div>
+        <div class="rolling-strip left">
+            <img src="images/film43.jpg"><img src="images/film44.jpg"><img src="images/film45.jpg"><img src="images/film46.jpg"><img src="images/film47.jpg"><img src="images/film48.jpg"><img src="images/film49.jpg">
+            <img src="images/film43.jpg"><img src="images/film44.jpg"><img src="images/film45.jpg"><img src="images/film46.jpg"><img src="images/film47.jpg"><img src="images/film48.jpg"><img src="images/film49.jpg">
         </div>
    </div>
 
     <div class="profile-image magnetic" id="profileToggle"></div>
 
     <div class="hero-content">
-        <h1><span id="name-swap">Jay</span> Merete</h1>
+        <h1 class="name-container">
+            <span class="flip-wrapper">
+                <span id="flip-name">Jay</span>
+            </span> 
+            Merete
+        </h1>
         <p class="role">Director · Writer · Creative</p>
 
         <p class="bio">
@@ -88,21 +110,12 @@
 <section class="work-section">
     <h2>Projects</h2>
     <div class="projects-frame">
-        <button class="category-toggle magnetic">Commercials & Music Video Direction</button>
-        <div id="directing" class="category-content">
+        <button class="category-toggle">Commercials & Music Video Direction</button>
+        <div id="directing" class="category-content active">
             <div class="project-grid">
-                <a href="https://youtu.be/QNMWqswdWQY" target="_blank" class="project-item">
-                    <img src="https://img.youtube.com/vi/QNMWqswdWQY/maxresdefault.jpg" alt="">
-                    <span>Daggy - Directing</span>
-                </a>
-                <a href="https://youtu.be/rVrnill0Kqs" target="_blank" class="project-item">
-                    <img src="https://img.youtube.com/vi/rVrnill0Kqs/maxresdefault.jpg" alt="">
-                    <span>Ante Lij - Directing</span>
-                </a>
-                <a href="https://youtu.be/nnY6e8mes4A" target="_blank" class="project-item">
-                    <img src="https://img.youtube.com/vi/nnY6e8mes4A/maxresdefault.jpg" alt="">
-                    <span>CBE Ethio Direct - Directing</span>
-                </a>
+                <a href="https://youtu.be/QNMWqswdWQY" target="_blank" class="project-item"><img src="images/daggy.jpg"></a>
+                <a href="https://youtu.be/rVrnill0Kqs" target="_blank" class="project-item"><img src="images/ante-lij.jpg"></a>
+                <a href="https://youtu.be/nnY6e8mes4A" target="_blank" class="project-item"><img src="images/cbe-ethio-direct.jpg"></a>
                 <div class="project-item text-only">Saba Sabina Remix – Shewina</div>
                 <div class="project-item text-only">Be Wuha – Anti & Bling Records</div>
                 <div class="project-item text-only">Teneshi – Geez City</div>
@@ -110,75 +123,68 @@
             </div>
         </div>
 
-        <button class="category-toggle magnetic">TV Series – Writing & Directing</button>
+        <button class="category-toggle">TV Series – Writing & Directing</button>
         <div id="tv" class="category-content">
             <div class="project-grid">
-                <a href="https://youtube.com/playlist?list=PL5-MdMvMRStnDBDhDZEhD6lvlEOWoQD7r" target="_blank" class="project-item">
-                    <img src="https://img.youtube.com/vi/am4igsg-RuI/maxresdefault.jpg" alt="">
-                    <span>Baletarikochu Series</span>
-                </a>
-                <div class="project-item text-only">Real Talk Addis – Season 2</div>
+                <a href="https://youtube.com/playlist?list=PL5-MdMvMRStnDBDhDZEhD6lvlEOWoQD7r" target="_blank" class="project-item"><img src="images/baletarikochu.jpg"></a>
+                <div class="project-item text-only">Real Talk Addis – Season 2 (Unreleased)</div>
             </div>
         </div>
 
-        <button class="category-toggle magnetic">Feature Film</button>
+        <button class="category-toggle">Feature Film</button>
         <div id="feature" class="category-content">
             <div class="project-grid">
-                <a href="https://youtu.be/am4igsg-RuI" target="_blank" class="project-item">
-                    <img src="https://img.youtube.com/vi/am4igsg-RuI/maxresdefault.jpg" alt="">
-                    <span>The Night Before Easter</span>
-                </a>
+                <a href="https://youtu.be/am4igsg-RuI" target="_blank" class="project-item"><img src="images/night-before-easter.jpg"></a>
             </div>
         </div>
 
-        <button class="category-toggle magnetic">Assistant Directing</button>
+        <button class="category-toggle">Assistant Directing – Commercials</button>
         <div id="assistant" class="category-content">
             <div class="project-grid">
-                <a href="https://youtu.be/kGQ9gKmc6Vc" target="_blank" class="project-item">
-                    <img src="https://img.youtube.com/vi/kGQ9gKmc6Vc/maxresdefault.jpg" alt="">
-                    <span>Dachi Commercial</span>
-                </a>
-                <a href="https://youtu.be/7ycVVbQxq4s" target="_blank" class="project-item">
-                    <img src="https://img.youtube.com/vi/7ycVVbQxq4s/maxresdefault.jpg" alt="">
-                    <span>Addis Bank Commercial</span>
-                </a>
-                <div class="project-item text-only">Aman Berki Coffee – AD</div>
+                <a href="https://youtu.be/kGQ9gKmc6Vc" target="_blank" class="project-item"><img src="images/dachi.jpg"></a>
+                <a href="https://youtu.be/7ycVVbQxq4s" target="_blank" class="project-item"><img src="images/addis-bank.jpg"></a>
+                <div class="project-item text-only">Aman Berki Coffee – Commercial</div>
             </div>
         </div>
 
-        <button class="category-toggle magnetic">Art Direction</button>
+        <button class="category-toggle">Art Direction</button>
         <div id="art" class="category-content">
             <div class="project-grid">
                 <div class="project-item text-only">A Documentary on Felasha Mura Community</div>
             </div>
         </div>
 
-        <button class="category-toggle magnetic">Creative Writing</button>
+        <button class="category-toggle">Creative Writing & Direction</button>
         <div id="creative" class="category-content">
             <div class="project-grid">
-                <div class="project-item text-only">CBE Tax Commercial – 2D</div>
-                <div class="project-item text-only">Eijo Real Estate – Script</div>
-                <div class="project-item text-only">Softuna Fishing – Creative</div>
+                <div class="project-item text-only">CBE Tax Commercial – 2D Animation</div>
+                <div class="project-item text-only">CBE Explore Ethiopia – 2D Animation</div>
+                <div class="project-item text-only">Eijo Real Estate – Creative Writing</div>
+                <div class="project-item text-only">Softuna Fishing Company – Creative Writing</div>
+                <div class="project-item text-only">Lovegrass Ethiopia – Creative Writing</div>
             </div>
         </div>
 
-        <button class="category-toggle magnetic">Copywriting & Translation</button>
+        <button class="category-toggle">Copywriting & Translation</button>
         <div id="copywriting" class="category-content">
             <div class="project-grid">
-                <div class="project-item text-only">History Film Company – Multiple Works</div>
+                <div class="project-item text-only">Multiple Works – History Film Company</div>
+                <div class="project-item text-only">The Night Before Easter</div>
                 <div class="project-item text-only">Albatross – Short Film</div>
+                <div class="project-item text-only">Tikus Delivery – Documentary</div>
+                <div class="project-item text-only">Multiple YouTube Videos</div>
             </div>
         </div>
 
-        <button class="category-toggle magnetic">Production Management</button>
+        <button class="category-toggle">Production Management & Coordination</button>
         <div id="production" class="category-content">
             <div class="project-grid">
-                <div class="project-item text-only">Talme Film – Coordination</div>
-                <div class="project-item text-only">The Night Before Easter – Management</div>
+                <div class="project-item text-only">Talme Film – Production Coordination (In Making)</div>
+                <div class="project-item text-only">The Night Before Easter – Production Management</div>
             </div>
         </div>
 
-        <button class="category-toggle magnetic">BTS Photography</button>
+        <button class="category-toggle">BTS Photography</button>
         <div id="bts" class="category-content">
             <div class="project-grid">
                 <div class="project-item text-only">Images coming soon...</div>
@@ -198,19 +204,17 @@
 </section>
 
 <footer class="footer">
-    <div class="footer-wrap">
-        <div class="currently-enjoying magnetic">
-            <a href="https://open.spotify.com/album/4jI9SU1GmpIVhHMuYZuvX7?si=59uBQL4dSgiLKVZO_xSqDQ" target="_blank" class="spotify-card">
-                <div class="equalizer">
-                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-                </div>
-                <div class="spotify-info">
-                    <span class="status-label">Now Playing</span>
-                    <span class="album-link">J. Cole — 2014 Forest Hills Drive</span>
-                </div>
-            </a>
+    <div class="footer-center">
+        <div class="spotify-box magnetic">
+            <div class="eq">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </div>
+            <div class="spotify-info">
+                <p class="now-playing">NOW PLAYING</p>
+                <p class="song-title">J. Cole — 2014 Forest Hills Drive</p>
+            </div>
         </div>
-
+        
         <a href="https://letterboxd.com/isthatyoujay/" target="_blank" class="letterboxd-link magnetic">
             <div class="circles">
                 <div class="circle"></div><div class="circle"></div><div class="circle"></div>
