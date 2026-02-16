@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
         flipInterval = setInterval(flipName, 3000);
     }, 2000);
 
-    // Pause animation when tab is not visible
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
             clearInterval(flipInterval);
@@ -39,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 2. ACCORDION - NOTHING OPEN BY DEFAULT
     const toggles = document.querySelectorAll('.category-toggle');
     const contents = document.querySelectorAll('.category-content');
+    const projectsSection = document.getElementById('projects');
 
     toggles.forEach(toggle => {
         toggle.addEventListener('click', () => {
@@ -53,8 +53,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 toggle.classList.add('active');
                 document.body.classList.add('cinematic');
                 
+                // Scroll directly to projects section
                 setTimeout(() => {
-                    content.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Then scroll to the content
+                    setTimeout(() => {
+                        content.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 300);
                 }, 100);
             } else {
                 document.body.classList.remove('cinematic');
@@ -62,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 3. MAGNETIC BUTTON - DISABLED ON MOBILE FOR PERFORMANCE
+    // 3. MAGNETIC BUTTON - DISABLED ON MOBILE
     const isMobile = window.innerWidth <= 768;
     
     if (!isMobile) {
@@ -95,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
     if(updateEl) updateEl.innerText = `LAST UPDATE: ${now.toLocaleDateString('en-US', options)}`;
 
-    // 5. BIO TAG INTERACTION
+    // 5. BIO TAG INTERACTION - SCROLL TO PROJECTS
     const bioTags = document.querySelectorAll('.tag');
     bioTags.forEach(tag => {
         tag.addEventListener('click', () => {
@@ -112,10 +117,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.body.classList.remove('cinematic');
 
                 setTimeout(() => {
-                    targetContent.classList.add('active');
-                    targetButton.classList.add('active');
-                    document.body.classList.add('cinematic');
-                    targetContent.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // First scroll to projects section
+                    projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    
+                    // Then open the content
+                    setTimeout(() => {
+                        targetContent.classList.add('active');
+                        targetButton.classList.add('active');
+                        document.body.classList.add('cinematic');
+                        targetContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 400);
                 }, 100);
             }
         });
