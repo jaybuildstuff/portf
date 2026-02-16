@@ -1,186 +1,114 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jay Merete — Director & Writer</title>
+:root {
+    --bg1: #0e0e0e;
+    --bg2: #141414;
+    --text: #f2f2f2;
+    --muted: #9b9b9b;
+    --box: #171717;
+}
 
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-</head>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-<body>
+body {
+    font-family: 'Manrope', sans-serif;
+    background: #0e0e0e;
+    color: var(--text);
+    line-height: 1.8;
+}
 
-<div class="grain"></div>
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
-<header class="top-bar">
-    <div class="availability">
-        <span class="status-dot"></span>
-        <span id="availability-text">Available for Hire</span>
-    </div>
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 5rem 2rem;
+}
 
-    <div class="social-icons">
-        <a href="https://instagram.com/jay.merete" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="mailto:yididyamerete@gmail.com"><i class="fas fa-envelope"></i></a>
-        <a href="https://t.me/loose_change" target="_blank"><i class="fab fa-telegram"></i></a>
-    </div>
-</header>
+.profile-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin: 0 auto 2rem;
+    background: url('profile.jpg') center/cover no-repeat;
+    border: 1px solid #222;
+    cursor: pointer;
+}
 
-<div class="update-bar">
-    <div class="progress"></div>
-    <span id="last-update"></span>
-</div>
+/* PROJECTS */
 
-<section class="hero">
-    <!-- KEEP YOUR ROLLING STRIPS EXACTLY AS THEY WERE -->
-    <!-- I am not touching them since they work -->
+.work-section {
+    padding: 4rem 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
 
-    <div class="profile-image" id="profileToggle"></div>
+.projects-frame {
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 2rem;
+}
 
-    <div class="hero-content">
-        <h1>Jay Merete</h1>
-        <p class="role">Director · Writer · Creative</p>
+.category-toggle {
+    background: var(--box);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 1rem;
+    width: 100%;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
 
-        <p class="bio">
-For the past five years, I’ve focused mainly on 
-<span class="tag" data-target="commercials">Writing & Directing</span> 
-within commercials and music videos. 
-I co-created my own 
-<span class="tag" data-target="tv">TV Series</span>.
+.category-content {
+    display: none;
+    margin-bottom: 25px;
+}
 
-I’ve also served as 
-<span class="tag" data-target="assistant">Assistant Director</span> 
-on a feature film and led 
-<span class="tag" data-target="art">Art Direction</span> 
-for a documentary.
+.category-content.active {
+    display: block;
+}
 
-My journey began as a 
-<span class="tag" data-target="production">Production Coordinator</span>.
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
 
-I also work in 
-<span class="tag" data-target="copy">Copywriting & Translation</span> 
-and explore 
-<span class="tag" data-target="bts">BTS Photography</span>.
-        </p>
+.project-card {
+    background: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
 
-        <a href="https://t.me/loose_change" target="_blank" class="telegram-cta">
-            <span>Write Me a Message</span>
-        </a>
-    </div>
-</section>
+.project-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+}
 
-<section class="work-section">
-<h2>Projects</h2>
+.project-card span {
+    display: block;
+    padding: 12px;
+    font-size: 0.9rem;
+}
 
-<div class="projects-frame">
+.project-card:hover {
+    transform: translateY(-4px);
+    background: #222;
+}
 
-<!-- Commercials -->
-<div class="category" id="commercials">
-<button class="category-toggle">Commercial & Music Video Directing</button>
-<div class="category-content">
-<div class="project-grid">
-
-<a href="https://youtu.be/QNMWqswdWQY" target="_blank" class="project-card">
-<img src="https://img.youtube.com/vi/QNMWqswdWQY/hqdefault.jpg">
-<span>Man Ale – Call Me Daggy ft Giday</span>
-</a>
-
-<a href="https://youtu.be/rVrnill0Kqs" target="_blank" class="project-card">
-<img src="https://img.youtube.com/vi/rVrnill0Kqs/hqdefault.jpg">
-<span>Jordan & Bek Geez – Ante Lij</span>
-</a>
-
-<div class="project-card text-only"><span>Saba Sabina Remix – Shewina</span></div>
-<div class="project-card text-only"><span>Be Wuha – Anti & Bling Records</span></div>
-<div class="project-card text-only"><span>Teneshi – Geez City</span></div>
-
-<a href="https://youtu.be/nnY6e8mes4A" target="_blank" class="project-card">
-<img src="https://img.youtube.com/vi/nnY6e8mes4A/hqdefault.jpg">
-<span>CBE – Ethio Direct</span>
-</a>
-
-<div class="project-card text-only"><span>Commercial for Tilla</span></div>
-
-</div>
-</div>
-</div>
-
-<!-- TV -->
-<div class="category" id="tv">
-<button class="category-toggle">TV Series — Writing & Directing</button>
-<div class="category-content">
-<div class="project-grid">
-<a href="https://youtube.com/playlist?list=PL5-MdMvMRStnDBDhDZEhD6lvlEOWoQD7r" target="_blank" class="project-card text-only">
-<span>Baletarikochu</span>
-</a>
-<div class="project-card text-only">
-<span>Real Talk Addis — Season 2 (Unreleased)</span>
-</div>
-</div>
-</div>
-</div>
-
-<!-- Assistant -->
-<div class="category" id="assistant">
-<button class="category-toggle">Assistant Directing — Feature Film</button>
-<div class="category-content">
-<div class="project-grid">
-<a href="https://youtu.be/am4igsg-RuI" target="_blank" class="project-card">
-<img src="https://img.youtube.com/vi/am4igsg-RuI/hqdefault.jpg">
-<span>The Night Before Easter</span>
-</a>
-</div>
-</div>
-</div>
-
-<!-- Copy -->
-<div class="category" id="copy">
-<button class="category-toggle">Copywriting & Translation</button>
-<div class="category-content">
-<div class="project-grid">
-<div class="project-card text-only"><span>Multiple Works — History Film Company</span></div>
-<div class="project-card text-only"><span>Translations: Night Before Easter · Albatross · Tikus Delivery</span></div>
-</div>
-</div>
-</div>
-
-<!-- Production -->
-<div class="category" id="production">
-<button class="category-toggle">Production Management & Coordination</button>
-<div class="category-content">
-<div class="project-grid">
-<div class="project-card text-only"><span>Talme Film — Production Coordination</span></div>
-<div class="project-card text-only"><span>The Night Before Easter — Production Management</span></div>
-</div>
-</div>
-</div>
-
-<!-- BTS -->
-<div class="category" id="bts">
-<button class="category-toggle">BTS Photography</button>
-<div class="category-content">
-<div class="project-grid">
-<div class="project-card text-only"><span>BTS Gallery Coming Soon</span></div>
-</div>
-</div>
-</div>
-
-<!-- Art -->
-<div class="category" id="art">
-<button class="category-toggle">Art Direction — Documentary</button>
-<div class="category-content">
-<div class="project-grid">
-<div class="project-card text-only">
-<span>A Documentary on the Felasha Mura Community</span>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</section>
-
-<script src="script.js"></script>
-</body>
-</html>
+.text-only {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
+    text-align: center;
+}
