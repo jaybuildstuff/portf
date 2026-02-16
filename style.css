@@ -1,317 +1,186 @@
-:root {
-    --bg1: #0e0e0e;
-    --bg2: #141414;
-    --text: #f2f2f2;
-    --muted: #9b9b9b;
-    --box: #171717;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jay Merete — Director & Writer</title>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
 
-body {
-    font-family: 'Manrope', sans-serif;
-    background: linear-gradient(-45deg, #0e0e0e, #141414, #101010, #161616);
-    background-size: 400% 400%;
-    animation: subtleShift 18s ease infinite;
-    color: var(--text);
-    line-height: 1.8;
-    -webkit-font-smoothing: antialiased;
-}
+<body>
 
-/* Remove all blue links globally */
-a {
-    color: inherit;
-    text-decoration: none;
-}
+<div class="grain"></div>
 
-@keyframes subtleShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+<header class="top-bar">
+    <div class="availability">
+        <span class="status-dot"></span>
+        <span id="availability-text">Available for Hire</span>
+    </div>
 
-.grain {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: 3px 3px;
-    opacity: 0.2;
-}
+    <div class="social-icons">
+        <a href="https://instagram.com/jay.merete" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:yididyamerete@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://t.me/loose_change" target="_blank"><i class="fab fa-telegram"></i></a>
+    </div>
+</header>
 
-/* ================= TOP BAR ================= */
+<div class="update-bar">
+    <div class="progress"></div>
+    <span id="last-update"></span>
+</div>
 
-.top-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 3rem;
-}
+<section class="hero">
+    <!-- KEEP YOUR ROLLING STRIPS EXACTLY AS THEY WERE -->
+    <!-- I am not touching them since they work -->
 
-.social-icons a {
-    margin-left: 18px;
-    font-size: 1.1rem;
-    opacity: 0.85;
-    transition: 0.3s ease;
-}
+    <div class="profile-image" id="profileToggle"></div>
 
-.social-icons a:hover {
-    opacity: 1;
-}
+    <div class="hero-content">
+        <h1>Jay Merete</h1>
+        <p class="role">Director · Writer · Creative</p>
 
-/* ================= UPDATE BAR ================= */
+        <p class="bio">
+For the past five years, I’ve focused mainly on 
+<span class="tag" data-target="commercials">Writing & Directing</span> 
+within commercials and music videos. 
+I co-created my own 
+<span class="tag" data-target="tv">TV Series</span>.
 
-.update-bar {
-    height: 4px;
-    background: #111;
-    position: relative;
-}
+I’ve also served as 
+<span class="tag" data-target="assistant">Assistant Director</span> 
+on a feature film and led 
+<span class="tag" data-target="art">Art Direction</span> 
+for a documentary.
 
-.progress {
-    height: 4px;
-    width: 0;
-    background: #2ecc71;
-    transition: width 2s ease;
-}
+My journey began as a 
+<span class="tag" data-target="production">Production Coordinator</span>.
 
-#last-update {
-    position: absolute;
-    right: 20px;
-    top: -20px;
-    font-size: 0.7rem;
-    color: var(--muted);
-}
+I also work in 
+<span class="tag" data-target="copy">Copywriting & Translation</span> 
+and explore 
+<span class="tag" data-target="bts">BTS Photography</span>.
+        </p>
 
-/* ================= HERO ================= */
+        <a href="https://t.me/loose_change" target="_blank" class="telegram-cta">
+            <span>Write Me a Message</span>
+        </a>
+    </div>
+</section>
 
-.hero {
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-    padding: 5rem 2rem;
-}
+<section class="work-section">
+<h2>Projects</h2>
 
-.rolling-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    z-index: 0;
+<div class="projects-frame">
 
-    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-}
+<!-- Commercials -->
+<div class="category" id="commercials">
+<button class="category-toggle">Commercial & Music Video Directing</button>
+<div class="category-content">
+<div class="project-grid">
 
-.rolling-strip {
-    display: flex;
-    gap: 60px;
-    width: max-content;
-}
+<a href="https://youtu.be/QNMWqswdWQY" target="_blank" class="project-card">
+<img src="https://img.youtube.com/vi/QNMWqswdWQY/hqdefault.jpg">
+<span>Man Ale – Call Me Daggy ft Giday</span>
+</a>
 
-.rolling-strip img {
-    height: 120px;
-    width: auto;
-    object-fit: cover;
-    opacity: 0.14;
-    filter: grayscale(100%);
-    transition: 0.3s ease;
-}
+<a href="https://youtu.be/rVrnill0Kqs" target="_blank" class="project-card">
+<img src="https://img.youtube.com/vi/rVrnill0Kqs/hqdefault.jpg">
+<span>Jordan & Bek Geez – Ante Lij</span>
+</a>
 
-.rolling-strip img:hover {
-    opacity: 0.35;
-    filter: grayscale(0%);
-}
+<div class="project-card text-only"><span>Saba Sabina Remix – Shewina</span></div>
+<div class="project-card text-only"><span>Be Wuha – Anti & Bling Records</span></div>
+<div class="project-card text-only"><span>Teneshi – Geez City</span></div>
 
-.left {
-    animation: scrollLeft 70s linear infinite;
-}
+<a href="https://youtu.be/nnY6e8mes4A" target="_blank" class="project-card">
+<img src="https://img.youtube.com/vi/nnY6e8mes4A/hqdefault.jpg">
+<span>CBE – Ethio Direct</span>
+</a>
 
-.right {
-    animation: scrollRight 70s linear infinite;
-}
+<div class="project-card text-only"><span>Commercial for Tilla</span></div>
 
-@keyframes scrollLeft {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
+</div>
+</div>
+</div>
 
-@keyframes scrollRight {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
-}
+<!-- TV -->
+<div class="category" id="tv">
+<button class="category-toggle">TV Series — Writing & Directing</button>
+<div class="category-content">
+<div class="project-grid">
+<a href="https://youtube.com/playlist?list=PL5-MdMvMRStnDBDhDZEhD6lvlEOWoQD7r" target="_blank" class="project-card text-only">
+<span>Baletarikochu</span>
+</a>
+<div class="project-card text-only">
+<span>Real Talk Addis — Season 2 (Unreleased)</span>
+</div>
+</div>
+</div>
+</div>
 
-.hero-content,
-.profile-image {
-    position: relative;
-    z-index: 2;
-}
+<!-- Assistant -->
+<div class="category" id="assistant">
+<button class="category-toggle">Assistant Directing — Feature Film</button>
+<div class="category-content">
+<div class="project-grid">
+<a href="https://youtu.be/am4igsg-RuI" target="_blank" class="project-card">
+<img src="https://img.youtube.com/vi/am4igsg-RuI/hqdefault.jpg">
+<span>The Night Before Easter</span>
+</a>
+</div>
+</div>
+</div>
 
-/* ================= PROFILE ================= */
+<!-- Copy -->
+<div class="category" id="copy">
+<button class="category-toggle">Copywriting & Translation</button>
+<div class="category-content">
+<div class="project-grid">
+<div class="project-card text-only"><span>Multiple Works — History Film Company</span></div>
+<div class="project-card text-only"><span>Translations: Night Before Easter · Albatross · Tikus Delivery</span></div>
+</div>
+</div>
+</div>
 
-.profile-image {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    margin: 0 auto 2rem;
-    background: url('profile.jpg') center/cover no-repeat;
-    border: 1px solid #222;
-    box-shadow: 0 0 30px rgba(255,255,255,0.06);
-    transition: 0.4s ease;
-    cursor: pointer;
-}
+<!-- Production -->
+<div class="category" id="production">
+<button class="category-toggle">Production Management & Coordination</button>
+<div class="category-content">
+<div class="project-grid">
+<div class="project-card text-only"><span>Talme Film — Production Coordination</span></div>
+<div class="project-card text-only"><span>The Night Before Easter — Production Management</span></div>
+</div>
+</div>
+</div>
 
-.profile-image:hover {
-    transform: scale(1.04);
-}
+<!-- BTS -->
+<div class="category" id="bts">
+<button class="category-toggle">BTS Photography</button>
+<div class="category-content">
+<div class="project-grid">
+<div class="project-card text-only"><span>BTS Gallery Coming Soon</span></div>
+</div>
+</div>
+</div>
 
-h1 {
-    font-size: 2.8rem;
-    font-weight: 800;
-    letter-spacing: -1px;
-}
+<!-- Art -->
+<div class="category" id="art">
+<button class="category-toggle">Art Direction — Documentary</button>
+<div class="category-content">
+<div class="project-grid">
+<div class="project-card text-only">
+<span>A Documentary on the Felasha Mura Community</span>
+</div>
+</div>
+</div>
+</div>
 
-.role {
-    color: var(--muted);
-    margin-top: 0.5rem;
-}
+</div>
+</section>
 
-.bio {
-    max-width: 750px;
-    margin: 2.5rem auto;
-    color: var(--muted);
-    font-size: 0.98rem;
-}
-
-.tag {
-    display: inline-block;
-    padding: 4px 10px;
-    margin: 0 2px;
-    border: 1px solid #222;
-    background: var(--box);
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 0.85rem;
-    cursor: pointer;
-}
-
-.telegram-cta {
-    display: inline-block;
-    margin-top: 1.5rem;
-    padding: 0.9rem 1.8rem;
-    border: 1px solid #222;
-    background: var(--box);
-    font-weight: 600;
-    border-radius: 8px;
-    transition: 0.3s ease;
-}
-
-.telegram-cta:hover {
-    background: #222;
-    transform: translateY(-2px);
-}
-
-/* ================= PROJECTS ================= */
-
-.work-section {
-    padding: 4rem 2rem;
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.projects-frame {
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 14px;
-    padding: 2rem;
-    box-shadow: 0 0 40px rgba(255,255,255,0.03);
-    text-align: left;
-}
-
-.category-toggle {
-    appearance: none;
-    -webkit-appearance: none;
-    background: var(--box);
-    border: 1px solid rgba(255,255,255,0.12);
-    padding: 1rem;
-    width: 100%;
-    font-weight: 600;
-    text-align: left;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: 0.25s ease;
-    color: var(--text);
-    font-family: inherit;
-}
-.category-toggle:hover {
-    background: #1f1f1f;
-}
-
-.category-content {
-    display: none;
-    padding: 1rem;
-    border: 1px solid rgba(255,255,255,0.08);
-    border-top: none;
-    border-radius: 0 0 8px 8px;
-    color: var(--muted);
-}
-
-.category-content.active {
-    display: block;
-}
-
-/* ================= HOBBIES ================= */
-
-.hobbies {
-    text-align: center;
-    padding: 3rem;
-    background: var(--box);
-}
-
-.clean-link {
-    font-weight: 600;
-    transition: 0.3s ease;
-}
-
-.clean-link:hover {
-    opacity: 0.8;
-}
-
-/* ================= FOOTER ================= */
-
-.footer {
-    display: flex;
-    justify-content: center;
-    padding: 2rem;
-}
-
-.letterboxd-link {
-    display: inline-block;
-    transition: 0.3s ease;
-}
-
-.letterboxd-link:hover {
-    transform: translateY(-2px);
-}
-
-.circles {
-    display: flex;
-    align-items: center;
-}
-
-.circle {
-    height: 14px;
-    width: 14px;
-    border-radius: 50%;
-}
-
-.circle:first-child { background: #FF8000; }
-.circle:nth-child(2) { background: #05E156; transform: translateX(-4px); }
-.circle:nth-child(3) { background: #40BCF4; transform: translateX(-8px); }
+<script src="script.js"></script>
+</body>
+</html>
