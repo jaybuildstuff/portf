@@ -16,7 +16,7 @@ body {
     font-family: 'Manrope', sans-serif;
     background: var(--bg); color: var(--text);
     line-height: 1.8; overflow-x: hidden; text-align: center;
-    cursor: none; /* Only hide cursor on body, not inputs */
+    cursor: default; /* Normal cursor */
 }
 
 /* CUSTOM SCROLLBAR */
@@ -25,21 +25,13 @@ body {
 ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-/* CURSOR & CINEMATIC EFFECTS */
-.custom-cursor {
-    width: 20px; height: 20px; border: 1px solid rgba(255,255,255,0.8);
-    border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999;
-    transition: transform 0.15s ease-out, background 0.2s; mix-blend-mode: difference;
-    will-change: transform;
-}
-.custom-cursor.active { transform: scale(3); background: rgba(255,255,255,0.15); border-color: transparent; }
-
+/* CINEMATIC EFFECTS */
 .letterbox {
     position: fixed; left: 0; width: 100%; height: 0vh;
     background: black; z-index: 9998; transition: 0.6s cubic-bezier(0.7, 0, 0.3, 1);
     pointer-events: none;
 }
-body.cinematic .letterbox { height: 10vh; } /* Slightly increased for better effect */
+body.cinematic .letterbox { height: 10vh; }
 .letterbox.top { top: 0; } .letterbox.bottom { bottom: 0; }
 
 .grain {
@@ -56,14 +48,31 @@ body.cinematic .letterbox { height: 10vh; } /* Slightly increased for better eff
 
 @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
 
-/* NAME FLIP ANIMATION */
-.name-container { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 800; display: flex; justify-content: center; gap: 15px; perspective: 1000px; margin-bottom: 1rem; }
-.flip-wrapper { display: inline-block; height: 1.2em; position: relative; width: 150px; overflow: hidden; }
-#flip-name { display: block; width: 100%; transition: transform 0.6s cubic-bezier(0.6, -0.28, 0.735, 0.045), opacity 0.3s; }
-.flip-up { transform: translateY(-100%); opacity: 0; }
-.flip-down { transform: translateY(100%); opacity: 0; }
-/* Default state for smooth entry */
-#flip-name { transform: translateY(0); opacity: 1; }
+/* NAME FLIP ANIMATION - FIXED FOR DIFFERENT LENGTHS */
+.name-container { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 800; display: flex; justify-content: center; gap: 15px; perspective: 1000px; margin-bottom: 1rem; align-items: center; }
+.flip-wrapper { display: inline-block; position: relative; min-width: 120px; text-align: center; }
+.flip-name {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0;
+}
+.flip-name.active {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+.flip-name.exit-up {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-30px);
+}
+.flip-name.enter-down {
+    opacity: 0;
+    transform: translateX(-50%) translateY(30px);
+}
 
 /* ROLLING STRIPS */
 .rolling-container { position: absolute; top: 0; left: 0; width: 100%; opacity: 0.08; pointer-events: none; z-index: 0; }
@@ -76,11 +85,18 @@ body.cinematic .letterbox { height: 10vh; } /* Slightly increased for better eff
 /* HERO CONTENT */
 .hero { position: relative; padding: 8rem 1rem 4rem; width: 100%; z-index: 2; }
 .hero-content { position: relative; z-index: 5; max-width: 800px; margin: 0 auto; }
+
+/* PROFILE IMAGE WITH GLOW - RESTORED */
 .profile-image {
     width: 180px; height: 180px; border-radius: 50%; margin: 0 auto 2.5rem;
     background: url('profile.jpg') center/cover no-repeat; border: 1px solid #222;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 0 30px rgba(46, 204, 113, 0.3), 0 10px 40px rgba(0,0,0,0.5);
+    transition: box-shadow 0.4s ease;
 }
+.profile-image:hover {
+    box-shadow: 0 0 50px rgba(46, 204, 113, 0.5), 0 15px 50px rgba(0,0,0,0.6);
+}
+
 .tag { display: inline-block; padding: 4px 12px; margin: 4px; border: 1px solid #222; background: var(--box); border-radius: 6px; cursor: pointer; transition: 0.3s; }
 .tag:hover { border-color: var(--accent); color: var(--accent); }
 .mini-box { background: rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 4px; color: var(--text); }
@@ -93,7 +109,7 @@ body.cinematic .letterbox { height: 10vh; } /* Slightly increased for better eff
 }
 .telegram-cta:hover { border-color: var(--accent); box-shadow: 0 0 20px rgba(46, 204, 113, 0.2); transform: translateY(-3px); }
 
-/* PROJECTS */
+/* PROJECTS - ACCORDION FIXED */
 .work-section { padding: 4rem 1.5rem; max-width: 950px; margin: 0 auto; position: relative; z-index: 5; }
 .projects-frame { border: 1px solid #222; border-radius: 14px; padding: 2rem; background: rgba(0,0,0,0.2); text-align: left; backdrop-filter: blur(5px); }
 .category-toggle {
@@ -102,6 +118,7 @@ body.cinematic .letterbox { height: 10vh; } /* Slightly increased for better eff
     transition: 0.3s; font-family: 'Manrope', sans-serif; font-size: 1rem;
 }
 .category-toggle:hover { border-color: var(--muted); }
+.category-toggle.active { border-color: var(--accent); }
 .category-content { display: none; padding: 2rem 1rem; border-left: 1px solid #222; border-right: 1px solid #222; border-bottom: 1px solid #222; margin-top: -10px; border-radius: 0 0 8px 8px; }
 .category-content.active { display: block; animation: slideIn 0.5s ease; }
 .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
@@ -148,5 +165,5 @@ body.cinematic .letterbox { height: 10vh; } /* Slightly increased for better eff
     .rolling-strip img { height: 80px; }
     .profile-image { width: 140px; height: 140px; }
     .name-container { flex-direction: column; gap: 5px; }
-    .flip-wrapper { width: 100%; text-align: center; }
+    .flip-wrapper { width: 100%; min-width: auto; }
 }
