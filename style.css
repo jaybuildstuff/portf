@@ -41,7 +41,7 @@ header p {
 
 .hero {
     position: relative;
-    height: 650px; /* FIXED HEIGHT prevents collapse */
+    height: 650px;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -49,7 +49,8 @@ header p {
     text-align: center;
 }
 
-.hero-content {
+.hero-content,
+.profile-image {
     position: relative;
     z-index: 2;
 }
@@ -58,8 +59,6 @@ header p {
     width: 120px;
     border-radius: 50%;
     margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 2;
 }
 
 /* ================= ROLLING BACKGROUND ================= */
@@ -83,7 +82,6 @@ header p {
     width: max-content;
 }
 
-/* THIS is critical for image stability */
 .rolling-strip img {
     height: 130px;
     width: auto;
@@ -98,8 +96,6 @@ header p {
     opacity: 0.3;
     filter: grayscale(0%);
 }
-
-/* Animation directions */
 
 .left {
     animation: scrollLeft 80s linear infinite;
@@ -138,7 +134,7 @@ header p {
     margin: 0.3rem;
     border-radius: 20px;
     cursor: pointer;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     transition: 0.3s ease;
 }
 
@@ -152,14 +148,15 @@ header p {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1.5rem;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 
 .project-card {
     background: var(--box);
     padding: 1rem;
     border-radius: 14px;
-    transition: transform 0.3s ease;
+    transition: 0.3s ease;
+    color: var(--text);
 }
 
 .project-card img {
@@ -180,6 +177,7 @@ header p {
 
 .project-card:hover {
     transform: translateY(-4px);
+    background: #1f1f1f;
 }
 
 /* ================= HOBBIES ================= */
@@ -199,39 +197,7 @@ header p {
 .clean-link:hover {
     text-decoration: underline;
 }
-/* ================= PROJECT GRID IMPROVEMENT ================= */
 
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1rem;
-}
-
-.project-card {
-    background: var(--box);
-    padding: 1rem;
-    border-radius: 12px;
-    transition: 0.3s ease;
-    display: block;
-    color: var(--text);
-}
-
-.project-card img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 0.8rem;
-}
-
-.project-card span {
-    display: block;
-    font-size: 0.9rem;
-}
-
-.project-card:hover {
-    transform: translateY(-4px);
-    background: #1f1f1f;
-}
 /* ================= FOOTER ================= */
 
 footer {
