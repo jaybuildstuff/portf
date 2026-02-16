@@ -16,7 +16,9 @@ body {
     font-family: 'Manrope', sans-serif;
     background: var(--bg); color: var(--text);
     line-height: 1.8; overflow-x: hidden; text-align: center;
-    cursor: default; /* Normal cursor */
+    cursor: default;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* CUSTOM SCROLLBAR */
@@ -48,9 +50,25 @@ body.cinematic .letterbox { height: 10vh; }
 
 @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
 
-/* NAME FLIP ANIMATION - FIXED FOR DIFFERENT LENGTHS */
-.name-container { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 800; display: flex; justify-content: center; gap: 15px; perspective: 1000px; margin-bottom: 1rem; align-items: center; }
-.flip-wrapper { display: inline-block; position: relative; min-width: 120px; text-align: center; }
+/* NAME - FIXED ALIGNMENT */
+.name-container { 
+    font-size: clamp(2.5rem, 8vw, 4rem); 
+    font-weight: 800; 
+    display: flex; 
+    justify-content: center; 
+    gap: 15px; 
+    margin-bottom: 1rem; 
+    align-items: baseline; /* Align text baselines */
+    flex-wrap: wrap;
+}
+.flip-wrapper { 
+    display: inline-block; 
+    position: relative; 
+    min-width: 120px; 
+    text-align: center; 
+    height: 1.2em; /* Match line-height */
+    vertical-align: baseline;
+}
 .flip-name {
     display: block;
     position: absolute;
@@ -60,6 +78,7 @@ body.cinematic .letterbox { height: 10vh; }
     width: max-content;
     transition: opacity 0.5s ease, transform 0.5s ease;
     opacity: 0;
+    white-space: nowrap;
 }
 .flip-name.active {
     opacity: 1;
@@ -73,20 +92,43 @@ body.cinematic .letterbox { height: 10vh; }
     opacity: 0;
     transform: translateX(-50%) translateY(30px);
 }
+.last-name {
+    display: inline-block;
+    white-space: nowrap;
+}
 
-/* ROLLING STRIPS */
-.rolling-container { position: absolute; top: 0; left: 0; width: 100%; opacity: 0.08; pointer-events: none; z-index: 0; }
-.rolling-strip { display: flex; gap: 40px; margin-bottom: 25px; white-space: nowrap; will-change: transform; }
-.rolling-strip img { height: 110px; filter: grayscale(100%); object-fit: cover; }
+/* ROLLING STRIPS - OPTIMIZED */
+.rolling-container { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    opacity: 0.08; 
+    pointer-events: none; 
+    z-index: 0; 
+    overflow: hidden;
+}
+.rolling-strip { 
+    display: flex; 
+    gap: 40px; 
+    margin-bottom: 25px; 
+    white-space: nowrap; 
+}
+.rolling-strip img { 
+    height: 110px; 
+    filter: grayscale(100%); 
+    object-fit: cover;
+    flex-shrink: 0;
+}
 .left { animation: scroll 60s linear infinite; }
 .right { animation: scroll 60s linear infinite reverse; }
 @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
 /* HERO CONTENT */
-.hero { position: relative; padding: 8rem 1rem 4rem; width: 100%; z-index: 2; }
+.hero { position: relative; padding: 6rem 1rem 4rem; width: 100%; z-index: 2; }
 .hero-content { position: relative; z-index: 5; max-width: 800px; margin: 0 auto; }
 
-/* PROFILE IMAGE WITH GLOW - RESTORED */
+/* PROFILE IMAGE WITH GLOW */
 .profile-image {
     width: 180px; height: 180px; border-radius: 50%; margin: 0 auto 2.5rem;
     background: url('profile.jpg') center/cover no-repeat; border: 1px solid #222;
@@ -109,7 +151,7 @@ body.cinematic .letterbox { height: 10vh; }
 }
 .telegram-cta:hover { border-color: var(--accent); box-shadow: 0 0 20px rgba(46, 204, 113, 0.2); transform: translateY(-3px); }
 
-/* PROJECTS - ACCORDION FIXED */
+/* PROJECTS - ACCORDION */
 .work-section { padding: 4rem 1.5rem; max-width: 950px; margin: 0 auto; position: relative; z-index: 5; }
 .projects-frame { border: 1px solid #222; border-radius: 14px; padding: 2rem; background: rgba(0,0,0,0.2); text-align: left; backdrop-filter: blur(5px); }
 .category-toggle {
@@ -123,7 +165,16 @@ body.cinematic .letterbox { height: 10vh; }
 .category-content.active { display: block; animation: slideIn 0.5s ease; }
 .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
 .project-item { display: block; text-decoration: none; }
-.project-item img { width: 100%; height: 130px; object-fit: cover; border-radius: 8px; opacity: 0.7; transition: 0.3s; filter: grayscale(20%); }
+.project-item img { 
+    width: 100%; 
+    height: 130px; 
+    object-fit: cover; 
+    border-radius: 8px; 
+    opacity: 0.7; 
+    transition: 0.3s; 
+    filter: grayscale(20%);
+    background: #111;
+}
 .project-item:hover img { opacity: 1; transform: scale(1.05); filter: grayscale(0%); }
 .text-only { padding: 15px; background: #111; border-radius: 8px; border: 1px solid #222; font-size: 0.85rem; text-align: center; color: var(--muted); display: flex; align-items: center; justify-content: center; min-height: 130px; }
 
@@ -158,12 +209,33 @@ body.cinematic .letterbox { height: 10vh; }
 
 @keyframes slideIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-/* MOBILE OPTIMIZATION */
+/* MOBILE OPTIMIZATION - FIXED */
 @media (max-width: 768px) {
     .top-bar { padding: 1.5rem; flex-direction: column; gap: 1rem; align-items: center; }
     .social-icons a { margin: 0 10px; }
-    .rolling-strip img { height: 80px; }
+    .rolling-strip img { height: 60px; }
+    .rolling-strip { gap: 20px; }
     .profile-image { width: 140px; height: 140px; }
-    .name-container { flex-direction: column; gap: 5px; }
-    .flip-wrapper { width: 100%; min-width: auto; }
+    .name-container { flex-direction: row; justify-content: center; flex-wrap: wrap; }
+    .flip-wrapper { min-width: 100px; }
+    .hero { padding: 4rem 1rem 2rem; }
+    .projects-frame { padding: 1rem; }
+    .project-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+    .project-item img { height: 100px; }
+    .text-only { min-height: 100px; font-size: 0.75rem; padding: 10px; }
+    .category-toggle { padding: 1rem; font-size: 0.9rem; }
+    .category-content { padding: 1rem 0.5rem; }
+    .footer { padding: 3rem 1rem; }
+    .hobbies { padding: 3rem 1rem; }
 }
+
+/* TABLET OPTIMIZATION */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .rolling-strip img { height: 90px; }
+    .project-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+}
+
+/* PERFORMANCE OPTIMIZATIONS */
+.magnetic { will-change: transform; }
+.rolling-strip { will-change: transform; }
+.project-item img { will-change: opacity, transform; }
