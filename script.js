@@ -35,35 +35,51 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // 2. ACCORDION - NOTHING OPEN BY DEFAULT
+    // 2. ACCORDION - SIMPLE OPEN/CLOSE (NO AUTO-SCROLL)
     const toggles = document.querySelectorAll('.category-toggle');
     const contents = document.querySelectorAll('.category-content');
     const projectsSection = document.getElementById('projects');
+    let scrollTimeout;
+
+    // Close accordion when scrolling away from projects section
+    function closeAccordionOnScroll() {
+        const projectsRect = projectsSection.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        
+        // If projects section is not visible in viewport, close accordion
+        if (projectsRect.bottom < 0 || projectsRect.top > viewportHeight) {
+            closeAllAccordions();
+        }
+    }
+
+    function closeAllAccordions() {
+        contents.forEach(c => c.classList.remove('active'));
+        toggles.forEach(t => t.classList.remove('active'));
+        document.body.classList.remove('cinematic');
+    }
+
+    // Listen for scroll with debounce
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(closeAccordionOnScroll, 300);
+    });
 
     toggles.forEach(toggle => {
         toggle.addEventListener('click', () => {
             const content = toggle.nextElementSibling;
             const isActive = content.classList.contains('active');
             
+            // Close all first
             contents.forEach(c => c.classList.remove('active'));
             toggles.forEach(t => t.classList.remove('active'));
             
             if (!isActive) {
+                // Open clicked section
                 content.classList.add('active');
                 toggle.classList.add('active');
                 document.body.classList.add('cinematic');
-                
-                // Scroll directly to projects section
-                setTimeout(() => {
-                    projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    // Then scroll to the content
-                    setTimeout(() => {
-                        content.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    }, 300);
-                }, 100);
-            } else {
-                document.body.classList.remove('cinematic');
             }
+            // No auto-scroll - user stays where they are
         });
     });
 
@@ -100,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
     if(updateEl) updateEl.innerText = `LAST UPDATE: ${now.toLocaleDateString('en-US', options)}`;
 
-    // 5. BIO TAG INTERACTION - SCROLL TO PROJECTS
+    // 5. BIO TAG INTERACTION - SIMPLE (NO AUTO-SCROLL)
     const bioTags = document.querySelectorAll('.tag');
     bioTags.forEach(tag => {
         tag.addEventListener('click', () => {
@@ -112,21 +128,16 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
             if (targetContent && targetButton) {
+                // Close all first
                 contents.forEach(c => c.classList.remove('active'));
                 toggles.forEach(t => t.classList.remove('active'));
                 document.body.classList.remove('cinematic');
 
+                // Open target section (no scroll)
                 setTimeout(() => {
-                    // First scroll to projects section
-                    projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    
-                    // Then open the content
-                    setTimeout(() => {
-                        targetContent.classList.add('active');
-                        targetButton.classList.add('active');
-                        document.body.classList.add('cinematic');
-                        targetContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    }, 400);
+                    targetContent.classList.add('active');
+                    targetButton.classList.add('active');
+                    document.body.classList.add('cinematic');
                 }, 100);
             }
         });
